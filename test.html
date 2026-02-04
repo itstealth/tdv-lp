@@ -3,292 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Institutional Journey Timeline</title>
+    <title>Why Study at The Design Village</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .timeline-container {
-            scroll-behavior: smooth;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            overflow: hidden;
-        }
-        .timeline-container::-webkit-scrollbar {
-            display: none;
-        }
-        
-        /* Mobile: 1.2 cards visible */
-        .timeline-card {
-            min-width: calc(83.33% - 12px);
-            flex-shrink: 0;
-        }
-        
-        /* Tablet: 2.5 cards visible */
-        @media (min-width: 640px) {
-            .timeline-card {
-                min-width: calc(40% - 16px);
-            }
-        }
-        
-        /* Desktop: 4.5 cards visible */
-        @media (min-width: 1024px) {
-            .timeline-card {
-                min-width: calc(22.22% - 16px);
-            }
-        }
-        
-        /* Extra large screens: maintain 4.5 cards */
-        @media (min-width: 1280px) {
-            .timeline-card {
-                min-width: 280px;
-                max-width: 300px;
-            }
-        }
-
-        .arrow-btn {
-            transition: all 0.3s ease;
-        }
-        
-        .arrow-btn:hover {
-            background-color: #000;
-            color: #fff;
-        }
-        
-        .arrow-btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-        
-        .arrow-btn:disabled:hover {
-            background-color: transparent;
-            color: #000;
-        }
-    </style>
 </head>
-<body class="bg-white">
-    <section class="py-8 md:py-12 px-4 md:px-8 max-w-[1600px] mx-auto">
+<body class="bg-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
         <!-- Header Section -->
-        <div class="flex justify-between items-start mb-8 md:mb-12">
-            <div>
-                <p class="text-xs font-medium mb-3 md:mb-4">(TIMELINE)</p>
-                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                    INSTITUTIONAL<br>JOURNEY
+        <div class="flex flex-col sm:flex-row justify-between items-start gap-6 mb-8 sm:mb-12 lg:mb-16">
+            <div class="w-full sm:w-auto">
+                <p class="text-xs tracking-wider mb-2 sm:mb-4">(HIGHLIGHTS)</p>
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
+                    WHY STUDY AT<br>
+                    THE DESIGN VILLAGE
                 </h1>
             </div>
-            
-            <!-- Navigation Arrows -->
-            <div class="flex gap-3 md:gap-4 mt-8 md:mt-12">
-                <button id="prevBtn" class="arrow-btn w-10 h-10 md:w-12 md:h-12 flex items-center justify-center border border-black">
-                    <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-                    </svg>
-                </button>
-                <button id="nextBtn" class="arrow-btn w-10 h-10 md:w-12 md:h-12 flex items-center justify-center border border-black">
-                    <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                    </svg>
-                </button>
+            <button class="w-full sm:w-auto border border-black px-6 py-2 rounded-full text-sm hover:bg-black hover:text-white transition-colors flex items-center justify-center gap-2 whitespace-nowrap">
+                Download Brochure
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Three Columns Section -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12 mb-8 sm:mb-12 lg:mb-16">
+            <!-- Column 1 -->
+            <div>
+                <div class="border-t border-black pt-4 sm:pt-6">
+                    <div class="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
+                        <span class="text-sm flex-shrink-0">01</span>
+                        <h3 class="text-base sm:text-lg font-bold leading-tight">INSTITUTION BY THE INDUSTRY</h3>
+                    </div>
+                    <p class="text-sm leading-relaxed text-gray-700">
+                        Design School founded by prominent designers from India and Europe, with an intent to offer world's best design education to Indian students; every decision at TDV, including curriculum, culture, partnerships etc. is shaped through a designer's lens
+                    </p>
+                </div>
+            </div>
+
+            <!-- Column 2 -->
+            <div>
+                <div class="border-t border-black pt-4 sm:pt-6">
+                    <div class="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
+                        <span class="text-sm flex-shrink-0">02</span>
+                        <h3 class="text-base sm:text-lg font-bold leading-tight">CREDIBILITY AND RECOGNITION</h3>
+                    </div>
+                    <p class="text-sm leading-relaxed text-gray-700">
+                        Degree conferred by OP Jindal Global University (JGU), recognized as one of the twelve Institutions of Eminence (IoE) by Government of India, along with select IITs, BITS etc., and ranked #1 Private University in India by QS rankings for 3 years in a row
+                    </p>
+                </div>
+            </div>
+
+            <!-- Column 3 -->
+            <div>
+                <div class="border-t border-black pt-4 sm:pt-6">
+                    <div class="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
+                        <span class="text-sm flex-shrink-0">03</span>
+                        <h3 class="text-base sm:text-lg font-bold leading-tight">LOCATIONAL ADVANTAGE</h3>
+                    </div>
+                    <p class="text-sm leading-relaxed text-gray-700">
+                        TDV is located in the urban core of NCR, in a neighbourhood buzzing with artisans and craftspeople, allowing students to step straight into the world of design, fashion and media, through self-paced freelancing, internship and networking opportunities
+                    </p>
+                </div>
             </div>
         </div>
 
-        <!-- Timeline Cards Container -->
-        <div class="relative">
-            <div id="timelineContainer" class="timeline-container flex gap-4 md:gap-5 lg:gap-6">
-                <!-- Card 1: Great Place to Study -->
-                <div class="timeline-card w-full">
-                    <div class="border-t border-black pt-3 md:pt-4 pb-2 md:pb-3">
-                        <h3 class="text-base md:text-lg font-bold">Great Place to Study</h3>
-                    </div>
-                    <div class="mb-3 md:mb-4">
-                        <img src="/assets/images/2019.png" 
-                             alt="Great Place to Study" 
-                             class="sm:w-[300px] h-[380px] w-full object-cover">
-                    </div>
-                    <div class="border-t border-black pt-2 md:pt-3">
-                        <p class="text-xs md:text-sm font-bold mb-1 md:mb-2">2019</p>
-                        <p class="text-xs md:text-sm leading-relaxed">
-                            Recognised as Great Place to Study for a commendable learning environment
-                        </p>
-                    </div>
-                </div>
+        <!-- Image and Postgraduate Module Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-start">
+            <!-- Image -->
+            <div class="order-2 lg:order-1">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&h=600&fit=crop" 
+                     alt="Students group photo" 
+                     class="w-full h-auto rounded-lg shadow-lg">
+            </div>
 
-                <!-- Card 2: Lost Graduation Show -->
-                <div class="timeline-card w-full">
-                    <div class="border-t border-black pt-3 md:pt-4 pb-2 md:pb-3">
-                        <h3 class="text-base md:text-lg font-bold">Lost Graduation Show</h3>
-                    </div>
-                    <div class="mb-3 md:mb-4">
-                        <img src="/assets/images/2021.png" 
-                             alt="Lost Graduation Show" 
-                             class="sm:w-[300px] h-[380px] w-full object-cover">
-                    </div>
-                    <div class="border-t border-black pt-2 md:pt-3">
-                        <p class="text-xs md:text-sm font-bold mb-1 md:mb-2">2021</p>
-                        <p class="text-xs md:text-sm leading-relaxed">
-                            Only Indian d-school invited to exhibit at the Lost Graduation Show at Salone del Mobile, Italy
-                        </p>
-                    </div>
+            <!-- Postgraduate Module -->
+            <div class="order-1 lg:order-2">
+                <div class="border-t border-black pt-4 sm:pt-6">
+                    <h3 class="text-base sm:text-lg font-bold mb-3 sm:mb-4">POSTGRADUATE PROFESSIONAL MODULE</h3>
+                    <p class="text-sm leading-relaxed text-gray-700">
+                        Secure your career prospects by preparing for market-entry through TDV's flagship Professional Development Module that focuses on your personality, creative portfolio, software skillset and a deep understanding of the profession
+                    </p>
                 </div>
-
-                <!-- Card 3: India Pavilion -->
-                <div class="timeline-card w-full">
-                    <div class="border-t border-black pt-3 md:pt-4 pb-2 md:pb-3">
-                        <h3 class="text-base md:text-lg font-bold">India Pavilion</h3>
-                    </div>
-                    <div class="mb-3 md:mb-4">
-                        <img src="/assets/images/2023.jpg" 
-                             alt="India Pavilion" 
-                             class="sm:w-[300px] h-[380px] w-full object-cover">
-                    </div>
-                    <div class="border-t border-black pt-2 md:pt-3">
-                        <p class="text-xs md:text-sm font-bold mb-1 md:mb-2">2023</p>
-                        <p class="text-xs md:text-sm leading-relaxed">
-                            TDV builds award-winning India Pavilion at the London Design Biennale
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Card 4: JGU Collaboration -->
-                <div class="timeline-card w-full">
-                    <div class="border-t border-black pt-3 md:pt-4 pb-2 md:pb-3">
-                        <h3 class="text-base md:text-lg font-bold">JGU Collaboration</h3>
-                    </div>
-                    <div class="mb-3 md:mb-4">
-                        <img src="/assets/images/2024.jpg" 
-                             alt="JGU Collaboration" 
-                             class="sm:w-[300px] h-[380px] w-full object-cover">
-                    </div>
-                    <div class="border-t border-black pt-2 md:pt-3">
-                        <p class="text-xs md:text-sm font-bold mb-1 md:mb-2">2024</p>
-                        <p class="text-xs md:text-sm leading-relaxed">
-                            Collaboration with O.P. Jindal Global University to advance design education in India
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Card 5: TDV Italy -->
-                <div class="timeline-card w-full">
-                    <div class="border-t border-black pt-3 md:pt-4 pb-2 md:pb-3">
-                        <h3 class="text-base md:text-lg font-bold">TDV Italy</h3>
-                    </div>
-                    <div class="mb-3 md:mb-4">
-                        <img src="/assets/images/2025.jpg" 
-                             alt="TDV Italy" 
-                             class="sm:w-[300px] h-[380px] w-full object-cover">
-                    </div>
-                    <div class="border-t border-black pt-2 md:pt-3">
-                        <p class="text-xs md:text-sm font-bold mb-1 md:mb-2">2025</p>
-                        <p class="text-xs md:text-sm leading-relaxed">
-                            Expansion footprint with establishment of TDV Europe Campus in Milan, Italy
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Card 6: Future Initiative -->
-                <!-- <div class="timeline-card">
-                    <div class="border-t border-black pt-3 md:pt-4 pb-2 md:pb-3">
-                        <h3 class="text-base md:text-lg font-bold">Future Initiative</h3>
-                    </div>
-                    <div class="mb-3 md:mb-4">
-                        <img src="/assets/images/2026.jpg" 
-                             alt="Future Initiative" 
-                             class="w-full h-48 md:h-56 lg:h-64 object-cover">
-                    </div>
-                    <div class="border-t border-black pt-2 md:pt-3">
-                        <p class="text-xs md:text-sm font-bold mb-1 md:mb-2">2026</p>
-                        <p class="text-xs md:text-sm leading-relaxed">
-                            Continuing to shape the future of design education globally
-                        </p>
-                    </div>
-                </div> -->
             </div>
         </div>
-    </section>
-
-    <script>
-        const container = document.getElementById('timelineContainer');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        
-        // Calculate scroll amount based on screen size
-        function getScrollAmount() {
-            const cardWidth = container.querySelector('.timeline-card').offsetWidth;
-            const gap = window.innerWidth >= 1024 ? 24 : window.innerWidth >= 768 ? 20 : 16;
-            return cardWidth + gap;
-        }
-
-        // Scroll previous
-        prevBtn.addEventListener('click', () => {
-            container.scrollBy({
-                left: -getScrollAmount(),
-                behavior: 'smooth'
-            });
-        });
-
-        // Scroll next
-        nextBtn.addEventListener('click', () => {
-            container.scrollBy({
-                left: getScrollAmount(),
-                behavior: 'smooth'
-            });
-        });
-
-        // Update button states based on scroll position
-        function updateButtonStates() {
-            const scrollLeft = container.scrollLeft;
-            const maxScroll = container.scrollWidth - container.clientWidth;
-            
-            // Disable/enable buttons
-            prevBtn.disabled = scrollLeft <= 1;
-            nextBtn.disabled = scrollLeft >= maxScroll - 1;
-        }
-
-        // Listen to scroll events
-        container.addEventListener('scroll', updateButtonStates);
-        
-        // Initial state
-        updateButtonStates();
-        
-        // Update on window resize
-        window.addEventListener('resize', updateButtonStates);
-
-        // Touch/Drag scroll support for desktop
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-
-        container.addEventListener('mousedown', (e) => {
-            isDown = true;
-            container.style.cursor = 'grabbing';
-            startX = e.pageX - container.offsetLeft;
-            scrollLeft = container.scrollLeft;
-        });
-
-        container.addEventListener('mouseleave', () => {
-            isDown = false;
-            container.style.cursor = 'default';
-        });
-
-        container.addEventListener('mouseup', () => {
-            isDown = false;
-            container.style.cursor = 'default';
-        });
-
-        container.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - container.offsetLeft;
-            const walk = (x - startX) * 2;
-            container.scrollLeft = scrollLeft - walk;
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
-                prevBtn.click();
-            } else if (e.key === 'ArrowRight') {
-                nextBtn.click();
-            }
-        });
-    </script>
+    </div>
 </body>
 </html>
