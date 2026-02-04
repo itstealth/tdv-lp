@@ -3,56 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Industry Focus</title>
+    <title>Recruiter Network Marquee</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-scroll {
+            animation: scroll 30s linear infinite;
+        }
+
+        .marquee-container:hover .animate-scroll {
+            animation-play-state: paused;
+        }
+    </style>
 </head>
-<body class="bg-[#F1EFED]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+<body class="bg-black text-white">
+    <div class="py-12 sm:py-16">
         <!-- Header Section -->
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 sm:mb-12 lg:mb-16">
-            <div>
-                <p class="text-xs tracking-wider mb-2 sm:mb-4">(INDUSTRY)</p>
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold">
-                    INDUSTRY FOCUS
-                </h1>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+                <!-- Left Column - Title -->
+                <div>
+                    <p class="text-xs tracking-wider mb-4">(ECOSYSTEM)</p>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+                        RECRUITER<br>NETWORK
+                    </h1>
+                </div>
+
+                <!-- Right Column - Description -->
+                <div class="flex items-center">
+                    <p class="text-sm sm:text-base leading-relaxed text-gray-300">
+                        TDV graduates don't just enter the industry, they shape it. From leading tech giants to global design powerhouses, our students bring their creativity and problem-solving skills to some of the biggest names in the world.
+                    </p>
+                </div>
             </div>
-            <button class="border border-black px-6 py-2 rounded-lg text-sm hover:bg-black hover:text-white transition-colors flex items-center gap-2 whitespace-nowrap">
-                More Projects
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-            </button>
         </div>
 
-        <!-- Two Column Cards Section -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
-            <!-- Card 1 - EXOLABS -->
-            <div class="group">
-                <div class="overflow-hidden mb-6">
-                    <img src="/assets/images/industry-focus1.png" 
-                         alt="Students working together" 
-                         class="w-full h-full sm:h-[328px] transition-transform duration-500 group-hover:scale-105">
-                </div>
-                <div class="border-t border-gray-400 pt-6">
-                    <h3 class="text-xl sm:text-2xl font-bold mb-4">EXOLABS</h3>
-                    <p class="text-sm sm:text-base leading-relaxed text-gray-700">
-                        Access a platform to nurture creative entrepreneurship, develop ventures, test ideas, gain mentorship, and build creative businesses
-                    </p>
-                </div>
-            </div>
+        <!-- Marquee Section -->
+        <div class="relative overflow-hidden marquee-container">
+            <div class="flex animate-scroll">
+                <!-- First set of logos -->
+                <div class="flex items-center space-x-12 sm:space-x-16 lg:space-x-20 px-6 sm:px-8 lg:px-10 flex-shrink-0">
+                    <!-- Logo 1 - Foster + Partners -->
+                    <div class="flex items-center space-x-2 flex-shrink-0">
+                        <span class="text-2xl sm:text-3xl lg:text-4xl font-bold">Foster</span>
+                        <span class="text-3xl sm:text-4xl lg:text-5xl font-light">+</span>
+                        <span class="text-2xl sm:text-3xl lg:text-4xl font-bold">Partners</span>
+                    </div>
 
-            <!-- Card 2 - TASKBOXES -->
-            <div class="group">
-                <div class="overflow-hidden mb-6">
-                    <img src="/assets/images/industry-focus2.png" 
-                         alt="Team collaboration" 
-                         class="w-full h-full sm:h-[328px] transition-transform duration-500 group-hover:scale-105">
+                    <!-- Logo 2 - Freecharge -->
+                    <div class="flex items-center space-x-2 flex-shrink-0">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center">
+                            <span class="text-black text-xl sm:text-2xl font-bold">f</span>
+                        </div>
+                        <span class="text-2xl sm:text-3xl lg:text-4xl font-bold">Freecharge</span>
+                    </div>
+
+                    <!-- Logo 3 - Google -->
+                    <div class="flex-shrink-0">
+                        <span class="text-3xl sm:text-4xl lg:text-5xl font-bold" style="font-family: 'Product Sans', sans-serif;">Google</span>
+                    </div>
+
+                    <!-- Logo 4 - Godrej -->
+                    <div class="flex-shrink-0">
+                        <span class="text-3xl sm:text-4xl lg:text-5xl font-bold italic" style="font-family: 'Brush Script MT', cursive;">godrej</span>
+                    </div>
+
+                    <!-- Logo 5 - Hindustan Times -->
+                    <div class="flex-shrink-0">
+                        <span class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold">Hindustan Times</span>
+                    </div>
+
+                    <!-- Logo 6 - Hermès -->
+                    <div class="flex flex-col items-center flex-shrink-0">
+                        <div class="text-xs mb-1">
+                            <svg width="60" height="30" viewBox="0 0 60 30" fill="white">
+                                <path d="M10 5 L20 5 M15 5 L15 25 M25 5 L35 5 M30 5 L30 15 L35 20 M40 5 L40 25 M45 5 L55 25 M55 5 L45 25"/>
+                            </svg>
+                        </div>
+                        <span class="text-xl sm:text-2xl font-serif tracking-widest">HERMÈS</span>
+                        <span class="text-xs tracking-widest">PARIS</span>
+                    </div>
+
+                    <!-- Logo 7 - Hero Enterprise -->
+                    <div class="border-2 border-white px-4 py-2 flex-shrink-0">
+                        <span class="text-2xl sm:text-3xl lg:text-4xl font-bold">Hero</span>
+                        <div class="text-xs tracking-wider">ENTERPRISE</div>
+                    </div>
+
+                    <!-- Logo 8 - HomeLane -->
+                    <div class="flex items-center space-x-2 flex-shrink-0">
+                        <div class="w-8 h-8 sm:w-10 sm:h-10">
+                            <svg viewBox="0 0 40 40" fill="white">
+                                <path d="M20 5 L35 15 L35 35 L5 35 L5 15 Z M20 5 L20 20 M10 20 L30 20"/>
+                            </svg>
+                        </div>
+                        <span class="text-2xl sm:text-3xl lg:text-4xl font-bold">HomeLane</span>
+                    </div>
                 </div>
-                <div class="border-t border-gray-400 pt-6">
-                    <h3 class="text-xl sm:text-2xl font-bold mb-4">TASKBOXES</h3>
-                    <p class="text-sm sm:text-base leading-relaxed text-gray-700">
-                        Collaborate with industry partners on real projects, gaining authentic experience, adding real-world projects to portfolio, and experiencing professional practice.
-                    </p>
+
+                <!-- Duplicate set of logos for seamless loop -->
+                <div class="flex items-center space-x-12 sm:space-x-16 lg:space-x-20 px-6 sm:px-8 lg:px-10 flex-shrink-0">
+                    <!-- Logo 1 - Foster + Partners -->
+                    <div class="flex items-center space-x-2 flex-shrink-0">
+                        <span class="text-2xl sm:text-3xl lg:text-4xl font-bold">Foster</span>
+                        <span class="text-3xl sm:text-4xl lg:text-5xl font-light">+</span>
+                        <span class="text-2xl sm:text-3xl lg:text-4xl font-bold">Partners</span>
+                    </div>
+
+                    <!-- Logo 2 - Freecharge -->
+                    <div class="flex items-center space-x-2 flex-shrink-0">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center">
+                            <span class="text-black text-xl sm:text-2xl font-bold">f</span>
+                        </div>
+                        <span class="text-2xl sm:text-3xl lg:text-4xl font-bold">Freecharge</span>
+                    </div>
+
+                    <!-- Logo 3 - Google -->
+                    <div class="flex-shrink-0">
+                        <span class="text-3xl sm:text-4xl lg:text-5xl font-bold" style="font-family: 'Product Sans', sans-serif;">Google</span>
+                    </div>
+
+                    <!-- Logo 4 - Godrej -->
+                    <div class="flex-shrink-0">
+                        <span class="text-3xl sm:text-4xl lg:text-5xl font-bold italic" style="font-family: 'Brush Script MT', cursive;">godrej</span>
+                    </div>
+
+                    <!-- Logo 5 - Hindustan Times -->
+                    <div class="flex-shrink-0">
+                        <span class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold">Hindustan Times</span>
+                    </div>
+
+                    <!-- Logo 6 - Hermès -->
+                    <div class="flex flex-col items-center flex-shrink-0">
+                        <div class="text-xs mb-1">
+                            <svg width="60" height="30" viewBox="0 0 60 30" fill="white">
+                                <path d="M10 5 L20 5 M15 5 L15 25 M25 5 L35 5 M30 5 L30 15 L35 20 M40 5 L40 25 M45 5 L55 25 M55 5 L45 25"/>
+                            </svg>
+                        </div>
+                        <span class="text-xl sm:text-2xl font-serif tracking-widest">HERMÈS</span>
+                        <span class="text-xs tracking-widest">PARIS</span>
+                    </div>
+
+                    <!-- Logo 7 - Hero Enterprise -->
+                    <div class="border-2 border-white px-4 py-2 flex-shrink-0">
+                        <span class="text-2xl sm:text-3xl lg:text-4xl font-bold">Hero</span>
+                        <div class="text-xs tracking-wider">ENTERPRISE</div>
+                    </div>
+
+                    <!-- Logo 8 - HomeLane -->
+                    <div class="flex items-center space-x-2 flex-shrink-0">
+                        <div class="w-8 h-8 sm:w-10 sm:h-10">
+                            <svg viewBox="0 0 40 40" fill="white">
+                                <path d="M20 5 L35 15 L35 35 L5 35 L5 15 Z M20 5 L20 20 M10 20 L30 20"/>
+                            </svg>
+                        </div>
+                        <span class="text-2xl sm:text-3xl lg:text-4xl font-bold">HomeLane</span>
+                    </div>
                 </div>
             </div>
         </div>
