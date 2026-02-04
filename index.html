@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hero Clone</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .timeline-container {
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      overflow: hidden;
+    }
+
+    .timeline-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Mobile: 1.2 cards visible */
+    .timeline-card {
+      min-width: calc(83.33% - 12px);
+      flex-shrink: 0;
+    }
+
+    /* Tablet: 2.5 cards visible */
+    @media (min-width: 640px) {
+      .timeline-card {
+        min-width: calc(40% - 16px);
+      }
+    }
+
+    /* Desktop: 4.5 cards visible */
+    @media (min-width: 1024px) {
+      .timeline-card {
+        min-width: calc(22.22% - 16px);
+      }
+    }
+
+    /* Extra large screens: maintain 4.5 cards */
+    @media (min-width: 1280px) {
+      .timeline-card {
+        min-width: 280px;
+        max-width: 300px;
+      }
+    }
+
+    .arrow-btn {
+      transition: all 0.3s ease;
+    }
+
+    .arrow-btn:hover {
+      background-color: #000;
+      color: #fff;
+    }
+
+    .arrow-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .arrow-btn:disabled:hover {
+      background-color: transparent;
+      color: #000;
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+  <!-- Hero Section -->
+  <section class="relative w-full min-h-screen sm:bg-[url('./assets/images/hero-bg.png')] bg-cover bg-center">
+    <img src="./assets/images/banner-mob.png" alt="banner" class="block h-full w-full object-cover sm:hidden" />
+    <div class="relative z-10 mx-auto max-w-[1200px] px-4">
+      <!-- Left content removed (form only) -->
+
+      <!-- FORM CARD (overlay on desktop; stacked on mobile) -->
+      <div class="relative z-20 mt-8 w-full pb-12 lg:absolute lg:top-6 lg:mt-0 lg:w-[440px] xl:right-0 xl:w-[480px]">
+        <div class="rounded-md bg-white shadow-[0_16px_40px_rgba(0,0,0,0.18)]">
+          <!-- tabs -->
+          <div class="px-6 pt-5">
+            <div class="flex items-end gap-6 border-b border-gray-200">
+              <button type="button"
+                class="border-b-2 border-black pb-2 text-[13px] font-extrabold tracking-wide text-black">
+                REGISTER
+              </button>
+              <button type="button" class="pb-2 text-[13px] font-extrabold tracking-wide text-gray-500">
+                LOGIN
+              </button>
+            </div>
+          </div>
+
+          <!-- fields -->
+          <form class="space-y-3 px-6 pb-6 pt-4">
+            <input type="text" placeholder="Student's Full Name *"
+              class="h-10 w-full rounded-sm border border-gray-200 px-3 text-sm text-gray-900 placeholder:text-gray-400 focus:border-[#CF7E34] focus:outline-none focus:ring-2 focus:ring-[#CF7E34]/25" />
+
+            <input type="email" placeholder="Student's Email *"
+              class="h-10 w-full rounded-sm border border-gray-200 px-3 text-sm text-gray-900 placeholder:text-gray-400 focus:border-[#CF7E34] focus:outline-none focus:ring-2 focus:ring-[#CF7E34]/25" />
+
+            <div class="flex gap-3">
+              <select
+                class="h-10 w-[92px] rounded-sm border border-gray-200 bg-white px-2 text-sm text-gray-700 focus:border-[#CF7E34] focus:outline-none focus:ring-2 focus:ring-[#CF7E34]/25">
+                <option selected>+91</option>
+                <option>+1</option>
+                <option>+44</option>
+                <option>+61</option>
+              </select>
+
+              <input type="tel" placeholder="Student's Mobile Number *"
+                class="h-10 w-full rounded-sm border border-gray-200 px-3 text-sm text-gray-900 placeholder:text-gray-400 focus:border-[#CF7E34] focus:outline-none focus:ring-2 focus:ring-[#CF7E34]/25" />
+            </div>
+
+            <input type="text" placeholder="Enter OTP"
+              class="h-10 w-full rounded-sm border border-gray-200 px-3 text-sm text-gray-900 placeholder:text-gray-400 focus:border-[#CF7E34] focus:outline-none focus:ring-2 focus:ring-[#CF7E34]/25" />
+
+            <!-- <select
+                class="h-10 w-full rounded-sm border border-gray-200 bg-white px-3 text-sm text-gray-500 focus:border-[#CF7E34] focus:outline-none focus:ring-2 focus:ring-[#CF7E34]/25"
+              >
+                <option selected>Select Gender *</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+                <option>Prefer not to say</option>
+              </select> -->
+
+            <select
+              class="h-10 w-full rounded-sm border border-gray-200 bg-white px-3 text-sm text-gray-500 focus:border-[#CF7E34] focus:outline-none focus:ring-2 focus:ring-[#CF7E34]/25">
+              <option selected>Select State *</option>
+              <option>Haryana</option>
+              <option>Delhi</option>
+              <option>Uttar Pradesh</option>
+            </select>
+
+            <select
+              class="h-10 w-full rounded-sm border border-gray-200 bg-white px-3 text-sm text-gray-500 focus:border-[#CF7E34] focus:outline-none focus:ring-2 focus:ring-[#CF7E34]/25">
+              <option selected>Select District *</option>
+              <option>Gurugram</option>
+              <option>Faridabad</option>
+              <option>Sonipat</option>
+            </select>
+
+            <select
+              class="h-10 w-full rounded-sm border border-gray-200 bg-white px-3 text-sm text-gray-500 focus:border-[#CF7E34] focus:outline-none focus:ring-2 focus:ring-[#CF7E34]/25">
+              <option selected>Select Programme *</option>
+              <option>M.Des</option>
+              <option>B.Des</option>
+            </select>
+
+            <select
+              class="h-10 w-full rounded-sm border border-gray-200 bg-white px-3 text-sm text-gray-500 focus:border-[#CF7E34] focus:outline-none focus:ring-2 focus:ring-[#CF7E34]/25">
+              <option selected>Select Specialization *</option>
+              <option>UI/UX</option>
+              <option>Interaction Design</option>
+              <option>Visual Communication</option>
+            </select>
+
+            <div class="flex items-center gap-3">
+              <!-- captcha preview box (visual clone) -->
+              <div
+                class="flex h-10 w-[130px] items-center justify-center rounded-sm bg-[#f0b7b0] text-[18px] font-extrabold tracking-[0.22em] text-black"
+                aria-hidden="true">
+                976585
+              </div>
+
+              <input type="text" placeholder="Enter Captcha"
+                class="h-10 w-full rounded-sm border border-gray-200 px-3 text-sm text-gray-900 placeholder:text-gray-400 focus:border-[#CF7E34] focus:outline-none focus:ring-2 focus:ring-[#CF7E34]/25" />
+            </div>
+
+            <label class="flex items-start gap-2 pt-1">
+              <input type="checkbox"
+                class="mt-1 h-4 w-4 rounded border-gray-300 text-[#CF7E34] focus:ring-[#CF7E34]/30" />
+              <span class="text-[12px] leading-snug text-gray-600">
+                I agree to receive information regarding my application by signing up
+                with The Design Village.
+              </span>
+            </label>
+
+            <button type="submit"
+              class="mt-2 h-11 w-full rounded-sm bg-[#CF7E34] text-[14px] font-extrabold tracking-wide text-white shadow-sm">
+              REGISTER
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlights Section -->
+  <section class="py-16 sm:px-8 px-4 bg-[#f2f2f2]">
+    <div class="max-w-7xl mx-auto">
+      <!-- Highlights Label -->
+      <div class="mb-8">
+        <p class="text-sm font-medium">(HIGHLIGHTS)</p>
+      </div>
+
+      <!-- Main Heading -->
+      <div class="sm:mb-20 mb-10">
+        <h1 class="text-2xl md:text-3xl lg:text-4xl font-medium sm:text-right leading-tight">
+          Unique design school founded by designers in India,<br class="sm:block hidden">
+          after extensive research into leading global institutions such as Aalto,<br class="sm:block hidden">
+          Harvard, Stanford, Politecnico di Milano, RCA, Tongji University, and TU<br class="sm:block hidden">
+          Delft, shaping a distinctive ecosystem to nurture future-ready designers.
+        </h1>
+      </div>
+
+      <!-- Awards Section -->
+      <div class="grid grid-cols-1 md:grid-cols-3 sm:gap-12 gap-6">
+        <!-- Forbes Award -->
+        <div class="border-t border-black pt-6">
+          <div class="mb-6">
+            <img src="./assets/images/forbes-logo.png" alt="Forbes" class="h-10 w-auto" />
+          </div>
+          <p class="text-base leading-relaxed">
+            Award-winning Campus located within the<br>
+            Industrial Heart of Noida, Delhi NCR
+          </p>
+        </div>
+
+        <!-- Don Norman Design Award -->
+        <div class="border-t border-black pt-6">
+          <div class="sm:mb-2 mb-6">
+            <img src="./assets/images/don-norman-logo.png" alt="Don Norman Design Award" class="h-14 w-auto" />
+          </div>
+          <p class="text-base leading-relaxed">
+            Recognition at Inaugural Award Ceremony for<br>
+            Curriculum & Pedagogical Frameworks
+          </p>
+        </div>
+
+        <!-- Fab Foundation -->
+        <div class="border-t border-black pt-6">
+          <div class="mb-6">
+            <img src="./assets/images/fabfoundation-logo.png" alt="fabfoundation" class="h-10 w-auto" />
+          </div>
+          <p class="text-base leading-relaxed">
+            Accredited labs, a US non-profit emerged from<br>
+            Massachusetts Institute of Technology
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Institutional Journey Section -->
+  <section class="py-8 md:py-12 px-4 md:px-8 max-w-[1600px] mx-auto">
+    <!-- Header Section -->
+    <div class="flex justify-between items-start mb-8 md:mb-12">
+      <div>
+        <p class="text-xs font-medium mb-3 md:mb-4">(TIMELINE)</p>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+          INSTITUTIONAL<br>JOURNEY
+        </h1>
+      </div>
+
+      <!-- Navigation Arrows -->
+      <div class="flex gap-3 md:gap-4 mt-8 md:mt-12">
+        <button id="prevBtn"
+          class="arrow-btn w-10 h-10 md:w-12 md:h-12 flex items-center justify-center border border-black">
+          <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button id="nextBtn"
+          class="arrow-btn w-10 h-10 md:w-12 md:h-12 flex items-center justify-center border border-black">
+          <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Timeline Cards Container -->
+    <div class="relative">
+      <div id="timelineContainer" class="timeline-container flex gap-4 md:gap-5 lg:gap-6">
+        <!-- Card 1: Great Place to Study -->
+        <div class="timeline-card w-full">
+          <div class="border-t border-black pt-3 md:pt-4 pb-2 md:pb-3">
+            <h3 class="text-base md:text-lg font-bold">Great Place to Study</h3>
+          </div>
+          <div class="mb-3 md:mb-4">
+            <img src="/assets/images/2019.png" alt="Great Place to Study"
+              class="sm:w-[300px] h-[380px] w-full object-cover">
+          </div>
+          <div class="border-t border-black pt-2 md:pt-3">
+            <p class="text-xs md:text-sm font-bold mb-1 md:mb-2">2019</p>
+            <p class="text-xs md:text-sm leading-relaxed">
+              Recognised as Great Place to Study for a commendable learning environment
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2: Lost Graduation Show -->
+        <div class="timeline-card w-full">
+          <div class="border-t border-black pt-3 md:pt-4 pb-2 md:pb-3">
+            <h3 class="text-base md:text-lg font-bold">Lost Graduation Show</h3>
+          </div>
+          <div class="mb-3 md:mb-4">
+            <img src="/assets/images/2021.png" alt="Lost Graduation Show"
+              class="sm:w-[300px] h-[380px] w-full object-cover">
+          </div>
+          <div class="border-t border-black pt-2 md:pt-3">
+            <p class="text-xs md:text-sm font-bold mb-1 md:mb-2">2021</p>
+            <p class="text-xs md:text-sm leading-relaxed">
+              Only Indian d-school invited to exhibit at the Lost Graduation Show at Salone del Mobile, Italy
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3: India Pavilion -->
+        <div class="timeline-card w-full">
+          <div class="border-t border-black pt-3 md:pt-4 pb-2 md:pb-3">
+            <h3 class="text-base md:text-lg font-bold">India Pavilion</h3>
+          </div>
+          <div class="mb-3 md:mb-4">
+            <img src="/assets/images/2023.jpg" alt="India Pavilion" class="sm:w-[300px] h-[380px] w-full object-cover">
+          </div>
+          <div class="border-t border-black pt-2 md:pt-3">
+            <p class="text-xs md:text-sm font-bold mb-1 md:mb-2">2023</p>
+            <p class="text-xs md:text-sm leading-relaxed">
+              TDV builds award-winning India Pavilion at the London Design Biennale
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 4: JGU Collaboration -->
+        <div class="timeline-card w-full">
+          <div class="border-t border-black pt-3 md:pt-4 pb-2 md:pb-3">
+            <h3 class="text-base md:text-lg font-bold">JGU Collaboration</h3>
+          </div>
+          <div class="mb-3 md:mb-4">
+            <img src="/assets/images/2024.jpg" alt="JGU Collaboration"
+              class="sm:w-[300px] h-[380px] w-full object-cover">
+          </div>
+          <div class="border-t border-black pt-2 md:pt-3">
+            <p class="text-xs md:text-sm font-bold mb-1 md:mb-2">2024</p>
+            <p class="text-xs md:text-sm leading-relaxed">
+              Collaboration with O.P. Jindal Global University to advance design education in India
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 5: TDV Italy -->
+        <div class="timeline-card w-full">
+          <div class="border-t border-black pt-3 md:pt-4 pb-2 md:pb-3">
+            <h3 class="text-base md:text-lg font-bold">TDV Italy</h3>
+          </div>
+          <div class="mb-3 md:mb-4">
+            <img src="/assets/images/2025.jpg" alt="TDV Italy" class="sm:w-[300px] h-[380px] w-full object-cover">
+          </div>
+          <div class="border-t border-black pt-2 md:pt-3">
+            <p class="text-xs md:text-sm font-bold mb-1 md:mb-2">2025</p>
+            <p class="text-xs md:text-sm leading-relaxed">
+              Expansion footprint with establishment of TDV Europe Campus in Milan, Italy
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 1: Great Place to Study -->
+        <div class="timeline-card w-full">
+          <div class="border-t border-black pt-3 md:pt-4 pb-2 md:pb-3">
+            <h3 class="text-base md:text-lg font-bold">Great Place to Study</h3>
+          </div>
+          <div class="mb-3 md:mb-4">
+            <img src="/assets/images/2019.png" alt="Great Place to Study"
+              class="sm:w-[300px] h-[380px] w-full object-cover">
+          </div>
+          <div class="border-t border-black pt-2 md:pt-3">
+            <p class="text-xs md:text-sm font-bold mb-1 md:mb-2">2019</p>
+            <p class="text-xs md:text-sm leading-relaxed">
+              Recognised as Great Place to Study for a commendable learning environment
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2: Lost Graduation Show -->
+        <div class="timeline-card w-full">
+          <div class="border-t border-black pt-3 md:pt-4 pb-2 md:pb-3">
+            <h3 class="text-base md:text-lg font-bold">Lost Graduation Show</h3>
+          </div>
+          <div class="mb-3 md:mb-4">
+            <img src="/assets/images/2021.png" alt="Lost Graduation Show"
+              class="sm:w-[300px] h-[380px] w-full object-cover">
+          </div>
+          <div class="border-t border-black pt-2 md:pt-3">
+            <p class="text-xs md:text-sm font-bold mb-1 md:mb-2">2021</p>
+            <p class="text-xs md:text-sm leading-relaxed">
+              Only Indian d-school invited to exhibit at the Lost Graduation Show at Salone del Mobile, Italy
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3: India Pavilion -->
+        <div class="timeline-card w-full">
+          <div class="border-t border-black pt-3 md:pt-4 pb-2 md:pb-3">
+            <h3 class="text-base md:text-lg font-bold">India Pavilion</h3>
+          </div>
+          <div class="mb-3 md:mb-4">
+            <img src="/assets/images/2023.jpg" alt="India Pavilion" class="sm:w-[300px] h-[380px] w-full object-cover">
+          </div>
+          <div class="border-t border-black pt-2 md:pt-3">
+            <p class="text-xs md:text-sm font-bold mb-1 md:mb-2">2023</p>
+            <p class="text-xs md:text-sm leading-relaxed">
+              TDV builds award-winning India Pavilion at the London Design Biennale
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 4: JGU Collaboration -->
+        <div class="timeline-card w-full">
+          <div class="border-t border-black pt-3 md:pt-4 pb-2 md:pb-3">
+            <h3 class="text-base md:text-lg font-bold">JGU Collaboration</h3>
+          </div>
+          <div class="mb-3 md:mb-4">
+            <img src="/assets/images/2024.jpg" alt="JGU Collaboration"
+              class="sm:w-[300px] h-[380px] w-full object-cover">
+          </div>
+          <div class="border-t border-black pt-2 md:pt-3">
+            <p class="text-xs md:text-sm font-bold mb-1 md:mb-2">2024</p>
+            <p class="text-xs md:text-sm leading-relaxed">
+              Collaboration with O.P. Jindal Global University to advance design education in India
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 5: TDV Italy -->
+        <div class="timeline-card w-full">
+          <div class="border-t border-black pt-3 md:pt-4 pb-2 md:pb-3">
+            <h3 class="text-base md:text-lg font-bold">TDV Italy</h3>
+          </div>
+          <div class="mb-3 md:mb-4">
+            <img src="/assets/images/2025.jpg" alt="TDV Italy" class="sm:w-[300px] h-[380px] w-full object-cover">
+          </div>
+          <div class="border-t border-black pt-2 md:pt-3">
+            <p class="text-xs md:text-sm font-bold mb-1 md:mb-2">2025</p>
+            <p class="text-xs md:text-sm leading-relaxed">
+              Expansion footprint with establishment of TDV Europe Campus in Milan, Italy
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 6: Future Initiative -->
+        <!-- <div class="timeline-card">
+                <div class="border-t border-black pt-3 md:pt-4 pb-2 md:pb-3">
+                    <h3 class="text-base md:text-lg font-bold">Future Initiative</h3>
+                </div>
+                <div class="mb-3 md:mb-4">
+                    <img src="/assets/images/2026.jpg" 
+                         alt="Future Initiative" 
+                         class="w-full h-48 md:h-56 lg:h-64 object-cover">
+                </div>
+                <div class="border-t border-black pt-2 md:pt-3">
+                    <p class="text-xs md:text-sm font-bold mb-1 md:mb-2">2026</p>
+                    <p class="text-xs md:text-sm leading-relaxed">
+                        Continuing to shape the future of design education globally
+                    </p>
+                </div>
+            </div> -->
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const container = document.getElementById('timelineContainer');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    // Calculate scroll amount based on screen size
+    function getScrollAmount() {
+      const cardWidth = container.querySelector('.timeline-card').offsetWidth;
+      const gap = window.innerWidth >= 1024 ? 24 : window.innerWidth >= 768 ? 20 : 16;
+      return cardWidth + gap;
+    }
+
+    // Scroll previous
+    prevBtn.addEventListener('click', () => {
+      container.scrollBy({
+        left: -getScrollAmount(),
+        behavior: 'smooth'
+      });
+    });
+
+    // Scroll next
+    nextBtn.addEventListener('click', () => {
+      container.scrollBy({
+        left: getScrollAmount(),
+        behavior: 'smooth'
+      });
+    });
+
+    // Update button states based on scroll position
+    function updateButtonStates() {
+      const scrollLeft = container.scrollLeft;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+
+      // Disable/enable buttons
+      prevBtn.disabled = scrollLeft <= 1;
+      nextBtn.disabled = scrollLeft >= maxScroll - 1;
+    }
+
+    // Listen to scroll events
+    container.addEventListener('scroll', updateButtonStates);
+
+    // Initial state
+    updateButtonStates();
+
+    // Update on window resize
+    window.addEventListener('resize', updateButtonStates);
+
+    // Touch/Drag scroll support for desktop
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    container.addEventListener('mousedown', (e) => {
+      isDown = true;
+      container.style.cursor = 'grabbing';
+      startX = e.pageX - container.offsetLeft;
+      scrollLeft = container.scrollLeft;
+    });
+
+    container.addEventListener('mouseleave', () => {
+      isDown = false;
+      container.style.cursor = 'default';
+    });
+
+    container.addEventListener('mouseup', () => {
+      isDown = false;
+      container.style.cursor = 'default';
+    });
+
+    container.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - container.offsetLeft;
+      const walk = (x - startX) * 2;
+      container.scrollLeft = scrollLeft - walk;
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        prevBtn.click();
+      } else if (e.key === 'ArrowRight') {
+        nextBtn.click();
+      }
+    });
+  </script>
+</body>
+
+</html>
