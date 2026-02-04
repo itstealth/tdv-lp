@@ -66,21 +66,22 @@
     }
 
     @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
+      0% {
+        transform: translateX(0);
+      }
 
-        .animate-scroll {
-            animation: scroll 5s linear infinite;
-        }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
 
-        .marquee-container:hover .animate-scroll {
-            animation-play-state: paused;
-        }
+    .animate-scroll {
+      animation: scroll 5s linear infinite;
+    }
+
+    .marquee-container:hover .animate-scroll {
+      animation-play-state: paused;
+    }
   </style>
 </head>
 
@@ -793,7 +794,7 @@
   </div>
 
   <!-- Recruiter Network Section -->
-  <div class="bg-black text-white py-12 sm:py-16">
+  <div class="bg-black text-white py-12 sm:py-16 lg:py-20">
     <!-- Header Section -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
@@ -817,136 +818,202 @@
     </div>
 
     <!-- Marquee Section -->
-    <div class="relative overflow-hidden marquee-container">
-      <div class="flex animate-scroll">
-        <!-- First set of logos -->
-        <div class="flex items-center space-x-12 sm:space-x-16 lg:space-x-20 px-6 sm:px-8 lg:px-10 flex-shrink-0">
-          <!-- Logo 1 - Foster + Partners -->
-          <div class="flex items-center space-x-2 flex-shrink-0">
-            <span class="text-2xl sm:text-3xl lg:text-4xl font-bold">Foster</span>
-            <span class="text-3xl sm:text-4xl lg:text-5xl font-light">+</span>
-            <span class="text-2xl sm:text-3xl lg:text-4xl font-bold">Partners</span>
-          </div>
-
-          <!-- Logo 2 - Freecharge -->
-          <div class="flex items-center space-x-2 flex-shrink-0">
-            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center">
-              <span class="text-black text-xl sm:text-2xl font-bold">f</span>
-            </div>
-            <span class="text-2xl sm:text-3xl lg:text-4xl font-bold">Freecharge</span>
-          </div>
-
-          <!-- Logo 3 - Google -->
-          <div class="flex-shrink-0">
-            <span class="text-3xl sm:text-4xl lg:text-5xl font-bold"
-              style="font-family: 'Product Sans', sans-serif;">Google</span>
-          </div>
-
-          <!-- Logo 4 - Godrej -->
-          <div class="flex-shrink-0">
-            <span class="text-3xl sm:text-4xl lg:text-5xl font-bold italic"
-              style="font-family: 'Brush Script MT', cursive;">godrej</span>
-          </div>
-
-          <!-- Logo 5 - Hindustan Times -->
-          <div class="flex-shrink-0">
-            <span class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold">Hindustan Times</span>
-          </div>
-
-          <!-- Logo 6 - Hermès -->
-          <div class="flex flex-col items-center flex-shrink-0">
-            <div class="text-xs mb-1">
-              <svg width="60" height="30" viewBox="0 0 60 30" fill="white">
-                <path
-                  d="M10 5 L20 5 M15 5 L15 25 M25 5 L35 5 M30 5 L30 15 L35 20 M40 5 L40 25 M45 5 L55 25 M55 5 L45 25" />
-              </svg>
-            </div>
-            <span class="text-xl sm:text-2xl font-serif tracking-widest">HERMÈS</span>
-            <span class="text-xs tracking-widest">PARIS</span>
-          </div>
-
-          <!-- Logo 7 - Hero Enterprise -->
-          <div class="border-2 border-white px-4 py-2 flex-shrink-0">
-            <span class="text-2xl sm:text-3xl lg:text-4xl font-bold">Hero</span>
-            <div class="text-xs tracking-wider">ENTERPRISE</div>
-          </div>
-
-          <!-- Logo 8 - HomeLane -->
-          <div class="flex items-center space-x-2 flex-shrink-0">
-            <div class="w-8 h-8 sm:w-10 sm:h-10">
-              <svg viewBox="0 0 40 40" fill="white">
-                <path d="M20 5 L35 15 L35 35 L5 35 L5 15 Z M20 5 L20 20 M10 20 L30 20" />
-              </svg>
-            </div>
-            <span class="text-2xl sm:text-3xl lg:text-4xl font-bold">HomeLane</span>
-          </div>
+    <div class="marquee-container">
+      <div class="marquee-content">
+        <!-- First Set of 20 Logos -->
+        <div class="logo-item">
+          <img src="/assets/rectuiters/foster-partners.png" alt="Foster + Partners">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/freecharge.png" alt="Freecharge">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/Google.png" alt="Google">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/godref.png" alt="Godrej">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/hindustan-times.png" alt="Hindustan Times">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/hermes-paris.png" alt="Hermès">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/Hero-enterprise.png" alt="Hero Enterprise">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/Homelane.png" alt="HomeLane">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/Innovaccer.png" alt="Innovaccer">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/Jaquar.png" alt="Jaquar">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/jio.png" alt="Jio">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/Livspace.png" alt="Livspace">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/noise.png" alt="Noise">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/porter.png" alt="Porter">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/Rajesh Pratap Singh.png" alt="Rajesh Pratap Singh">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/Steelbird.png" alt="Steelbird">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/Superdry.png" alt="Superdry">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/tata.png" alt="Tata">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/vogue.png" alt="Vogue">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/wild.png" alt="Wild">
         </div>
 
-        <!-- Duplicate set of logos for seamless loop -->
-        <div class="flex items-center space-x-12 sm:space-x-16 lg:space-x-20 px-6 sm:px-8 lg:px-10 flex-shrink-0">
-          <!-- Logo 1 - Foster + Partners -->
-          <div class="flex items-center space-x-2 flex-shrink-0">
-            <span class="text-2xl sm:text-3xl lg:text-4xl font-bold">Foster</span>
-            <span class="text-3xl sm:text-4xl lg:text-5xl font-light">+</span>
-            <span class="text-2xl sm:text-3xl lg:text-4xl font-bold">Partners</span>
-          </div>
-
-          <!-- Logo 2 - Freecharge -->
-          <div class="flex items-center space-x-2 flex-shrink-0">
-            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center">
-              <span class="text-black text-xl sm:text-2xl font-bold">f</span>
-            </div>
-            <span class="text-2xl sm:text-3xl lg:text-4xl font-bold">Freecharge</span>
-          </div>
-
-          <!-- Logo 3 - Google -->
-          <div class="flex-shrink-0">
-            <span class="text-3xl sm:text-4xl lg:text-5xl font-bold"
-              style="font-family: 'Product Sans', sans-serif;">Google</span>
-          </div>
-
-          <!-- Logo 4 - Godrej -->
-          <div class="flex-shrink-0">
-            <span class="text-3xl sm:text-4xl lg:text-5xl font-bold italic"
-              style="font-family: 'Brush Script MT', cursive;">godrej</span>
-          </div>
-
-          <!-- Logo 5 - Hindustan Times -->
-          <div class="flex-shrink-0">
-            <span class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold">Hindustan Times</span>
-          </div>
-
-          <!-- Logo 6 - Hermès -->
-          <div class="flex flex-col items-center flex-shrink-0">
-            <div class="text-xs mb-1">
-              <svg width="60" height="30" viewBox="0 0 60 30" fill="white">
-                <path
-                  d="M10 5 L20 5 M15 5 L15 25 M25 5 L35 5 M30 5 L30 15 L35 20 M40 5 L40 25 M45 5 L55 25 M55 5 L45 25" />
-              </svg>
-            </div>
-            <span class="text-xl sm:text-2xl font-serif tracking-widest">HERMÈS</span>
-            <span class="text-xs tracking-widest">PARIS</span>
-          </div>
-
-          <!-- Logo 7 - Hero Enterprise -->
-          <div class="border-2 border-white px-4 py-2 flex-shrink-0">
-            <span class="text-2xl sm:text-3xl lg:text-4xl font-bold">Hero</span>
-            <div class="text-xs tracking-wider">ENTERPRISE</div>
-          </div>
-
-          <!-- Logo 8 - HomeLane -->
-          <div class="flex items-center space-x-2 flex-shrink-0">
-            <div class="w-8 h-8 sm:w-10 sm:h-10">
-              <svg viewBox="0 0 40 40" fill="white">
-                <path d="M20 5 L35 15 L35 35 L5 35 L5 15 Z M20 5 L20 20 M10 20 L30 20" />
-              </svg>
-            </div>
-            <span class="text-2xl sm:text-3xl lg:text-4xl font-bold">HomeLane</span>
-          </div>
+        <!-- Duplicate Set for Seamless Loop -->
+        <div class="logo-item">
+          <img src="/assets/rectuiters/foster-partners.png" alt="Foster + Partners">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/freecharge.png" alt="Freecharge">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/Google.png" alt="Google">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/godref.png" alt="Godrej">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/hindustan-times.png" alt="Hindustan Times">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/hermes-paris.png" alt="Hermès">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/Hero-enterprise.png" alt="Hero Enterprise">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/Homelane.png" alt="HomeLane">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/Innovaccer.png" alt="Innovaccer">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/Jaquar.png" alt="Jaquar">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/jio.png" alt="Jio">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/Livspace.png" alt="Livspace">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/noise.png" alt="Noise">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/porter.png" alt="Porter">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/Rajesh Pratap Singh.png" alt="Rajesh Pratap Singh">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/Steelbird.png" alt="Steelbird">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/Superdry.png" alt="Superdry">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/tata.png" alt="Tata">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/vogue.png" alt="Vogue">
+        </div>
+        <div class="logo-item">
+          <img src="/assets/rectuiters/wild.png" alt="Wild">
         </div>
       </div>
     </div>
-  </div>
+
+    <style>
+      .marquee-container {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        background: black;
+      }
+
+      .marquee-content {
+        display: flex;
+        width: max-content;
+        animation: scroll 40s linear infinite;
+      }
+
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      .marquee-container:hover .marquee-content {
+        animation-play-state: paused;
+      }
+
+      .logo-item {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 2.5rem;
+        height: 120px;
+      }
+
+      .logo-item img {
+        max-height: 60px;
+        max-width: 180px;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        filter: brightness(0) invert(1);
+      }
+
+      @media (min-width: 640px) {
+        .logo-item {
+          padding: 0 3rem;
+        }
+
+        .logo-item img {
+          max-height: 70px;
+          max-width: 200px;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .logo-item {
+          padding: 0 4rem;
+        }
+
+        .logo-item img {
+          max-height: 80px;
+          max-width: 220px;
+        }
+      }
+    </style>
 
 </body>
 
