@@ -3,224 +3,575 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recruiter Network Marquee - Fixed</title>
+    <title>Graduate Testimonials</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .marquee-container {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+        
+        .slider-container {
             overflow: hidden;
             position: relative;
             width: 100%;
-            background: black;
         }
-
-        .marquee-content {
+        
+        .slider-track {
             display: flex;
-            width: max-content;
-            animation: scroll 40s linear infinite;
+            gap: 20px;
+            will-change: transform;
+        }
+        
+        .slider-track.animating {
+            transition: transform 0.5s ease;
+        }
+        
+        .testimonial-card {
+            flex: 0 0 auto;
+            width: 280px;
         }
 
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
+        /* Square image container */
+        .testimonial-card .image-container {
+            width: 100%;
+            aspect-ratio: 1;
+            overflow: hidden;
+            background: #d1d5db;
+        }
+
+        .testimonial-card .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+        }
+
+        /* Horizontal borders */
+        .border-line {
+            width: 100%;
+            height: 1px;
+            background-color: #000;
+            margin: 16px 0;
+        }
+        
+        /* Desktop - Show 5.5 cards */
+        @media (min-width: 1536px) {
+            .testimonial-card {
+                width: calc((100vw - 200px) / 5.5);
+                max-width: 320px;
             }
-            100% {
-                transform: translateX(-50%);
+        }
+
+        @media (min-width: 1280px) and (max-width: 1535px) {
+            .testimonial-card {
+                width: calc((100vw - 180px) / 5.5);
+                max-width: 300px;
             }
         }
 
-        .marquee-container:hover .marquee-content {
-            animation-play-state: paused;
+        @media (min-width: 1024px) and (max-width: 1279px) {
+            .testimonial-card {
+                width: calc((100vw - 160px) / 4.5);
+            }
         }
 
-        .logo-item {
-            flex-shrink: 0;
+        /* Tablet */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .testimonial-card {
+                width: calc((100vw - 120px) / 3.5);
+            }
+        }
+
+        /* Mobile */
+        @media (min-width: 640px) and (max-width: 767px) {
+            .testimonial-card {
+                width: calc((100vw - 80px) / 2.3);
+            }
+        }
+
+        @media (max-width: 639px) {
+            .testimonial-card {
+                width: calc((100vw - 60px) / 1.5);
+            }
+        }
+        
+        .company-logo {
+            max-height: 32px;
+            width: auto;
+            object-fit: contain;
+            filter: none;
+        }
+        
+        .hero-logo-box {
+            border: 1.5px solid #000;
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 2px;
+        }
+
+        .hero-logo-box .hero-text {
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-logo-box .motocorp-text {
+            font-size: 10px;
+            letter-spacing: 0.3px;
+        }
+        
+        /* Navigation Buttons */
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border: 1px solid #d1d5db;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0 2.5rem;
-            height: 120px;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .nav-button:hover {
+            background: #f9fafb;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-50%) scale(1.05);
+        }
+        
+        .nav-button-left {
+            left: -22px;
+        }
+        
+        .nav-button-right {
+            right: -22px;
         }
 
-        .logo-item img {
-            max-height: 60px;
-            max-width: 180px;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            filter: brightness(0) invert(1);
-        }
-
-        @media (min-width: 640px) {
-            .logo-item {
-                padding: 0 3rem;
+        @media (max-width: 768px) {
+            .nav-button-left {
+                left: 10px;
             }
-            .logo-item img {
-                max-height: 70px;
-                max-width: 200px;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .logo-item {
-                padding: 0 4rem;
-            }
-            .logo-item img {
-                max-height: 80px;
-                max-width: 220px;
+            .nav-button-right {
+                right: 10px;
             }
         }
     </style>
 </head>
-<body class="bg-black text-white">
-    <div class="py-12 sm:py-16 lg:py-20">
+<body class="bg-white">
+    <div class="max-w-[1600px] mx-auto px-6 sm:px-8 lg:px-12 py-12 sm:py-16 lg:py-20">
         <!-- Header Section -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
-                <!-- Left Column - Title -->
-                <div>
-                    <p class="text-xs tracking-wider mb-4">(ECOSYSTEM)</p>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                        RECRUITER<br>NETWORK
+        <div class="mb-10 px-0 sm:px-6 sm:mb-12 lg:mb-16">
+            <div class="flex flex-col sm:flex-row items-start justify-between gap-6">
+                <div class="flex-1">
+                    <p class="text-[11px] sm:text-xs tracking-wider mb-3 sm:mb-4 text-gray-500 font-medium">(PLACEMENTS)</p>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] mb-6 sm:mb-8">
+                        GRADUATE<br>TESTIMONIALS
                     </h1>
+                    <div class="max-w-2xl">
+                        <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+                            Industry Relations team at TDV works closely with students to help them secure internships and placements from a diverse and prestigious array of sources, while ensuring that their personal career goals are met.
+                        </p>
+                    </div>
                 </div>
-
-                <!-- Right Column - Description -->
-                <div class="flex items-center">
-                    <p class="text-sm sm:text-base leading-relaxed text-gray-300">
-                        TDV graduates don't just enter the industry, they shape it. From leading tech giants to global design powerhouses, our students bring their creativity and problem-solving skills to some of the biggest names in the world.
-                    </p>
-                </div>
+                <button class="border border-gray-900 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm font-medium hover:bg-gray-900 hover:text-white transition-all duration-300 flex items-center gap-2 whitespace-nowrap">
+                    Placement Report 2024
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7l10 10M7 17V7h10"/>
+                    </svg>
+                </button>
             </div>
         </div>
 
-        <!-- Marquee Section -->
-        <div class="marquee-container">
-            <div class="marquee-content">
-                <!-- First Set of 20 Logos -->
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/foster-partners.png" alt="Foster + Partners">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/freecharge.png" alt="Freecharge">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/Google.png" alt="Google">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/godref.png" alt="Godrej">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/hindustan-times.png" alt="Hindustan Times">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/hermes-paris.png" alt="Hermès">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/Hero-enterprise.png" alt="Hero Enterprise">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/Homelane.png" alt="HomeLane">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/Innovaccer.png" alt="Innovaccer">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/Jaquar.png" alt="Jaquar">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/jio.png" alt="Jio">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/Livspace.png" alt="Livspace">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/noise.png" alt="Noise">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/porter.png" alt="Porter">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/Rajesh Pratap Singh.png" alt="Rajesh Pratap Singh">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/Steelbird.png" alt="Steelbird">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/Superdry.png" alt="Superdry">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/tata.png" alt="Tata">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/vogue.png" alt="Vogue">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/wild.png" alt="Wild">
-                </div>
-                
-                <!-- Duplicate Set for Seamless Loop -->
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/foster-partners.png" alt="Foster + Partners">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/freecharge.png" alt="Freecharge">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/Google.png" alt="Google">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/godref.png" alt="Godrej">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/hindustan-times.png" alt="Hindustan Times">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/hermes-paris.png" alt="Hermès">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/Hero-enterprise.png" alt="Hero Enterprise">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/Homelane.png" alt="HomeLane">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/Innovaccer.png" alt="Innovaccer">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/Jaquar.png" alt="Jaquar">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/jio.png" alt="Jio">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/Livspace.png" alt="Livspace">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/noise.png" alt="Noise">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/porter.png" alt="Porter">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/Rajesh Pratap Singh.png" alt="Rajesh Pratap Singh">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/Steelbird.png" alt="Steelbird">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/Superdry.png" alt="Superdry">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/tata.png" alt="Tata">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/vogue.png" alt="Vogue">
-                </div>
-                <div class="logo-item">
-                    <img src="/assets/rectuiters/wild.png" alt="Wild">
+        <!-- Slider Section -->
+        <div class="relative px-0 sm:px-6">
+            <!-- Navigation Buttons -->
+            <button id="prevBtn" class="nav-button nav-button-left" aria-label="Previous">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+                </svg>
+            </button>
+            
+            <button id="nextBtn" class="nav-button nav-button-right" aria-label="Next">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                </svg>
+            </button>
+
+            <div class="slider-container">
+                <div id="sliderTrack" class="slider-track">
+                    <!-- Testimonial Card 1 -->
+                    <div class="testimonial-card">
+                        <!-- Square Image -->
+                        <div class="image-container">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" alt="Harshit Gupta">
+                        </div>
+                        
+                        <!-- Company Logo -->
+                        <div class="mt-4 mb-0">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Hindustan_Times_logo.svg/320px-Hindustan_Times_logo.svg.png" alt="Hindustan Times" class="company-logo">
+                        </div>
+                        
+                        <!-- Horizontal Border -->
+                        <div class="border-line"></div>
+                        
+                        <!-- Name -->
+                        <h3 class="font-semibold text-base sm:text-lg tracking-tight">HARSHIT GUPTA</h3>
+                        
+                        <!-- Horizontal Border -->
+                        <div class="border-line"></div>
+                        
+                        <!-- Description -->
+                        <p class="text-xs sm:text-sm text-gray-900 leading-relaxed">
+                            TDV taught me how to adapt. Working across disciplines sharpened my problem-solving skills, something that's invaluable in today's design industry.
+                        </p>
+                    </div>
+
+                    <!-- Testimonial Card 2 -->
+                    <div class="testimonial-card">
+                        <div class="image-container">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop" alt="Jugaadh Lamba">
+                        </div>
+                        
+                        <div class="mt-4 mb-0">
+                            <div class="hero-logo-box">
+                                <div class="hero-text">HERO</div>
+                                <div class="motocorp-text">MOTOCORP</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-line"></div>
+                        
+                        <h3 class="font-semibold text-base sm:text-lg tracking-tight">JUGAADH LAMBA</h3>
+                        
+                        <div class="border-line"></div>
+                        
+                        <p class="text-xs sm:text-sm text-gray-900 leading-relaxed">
+                            My first role felt less scary because TDV prepared me through internships and collaborations with real-world organizations via task boxes.
+                        </p>
+                    </div>
+
+                    <!-- Testimonial Card 3 -->
+                    <div class="testimonial-card">
+                        <div class="image-container">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop" alt="Meenakshy L">
+                        </div>
+                        
+                        <div class="mt-4 mb-0">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Superdry_logo.svg/320px-Superdry_logo.svg.png" alt="Superdry" class="company-logo" style="height: 28px;">
+                        </div>
+                        
+                        <div class="border-line"></div>
+                        
+                        <h3 class="font-semibold text-base sm:text-lg tracking-tight">MEENAKSHY L</h3>
+                        
+                        <div class="border-line"></div>
+                        
+                        <p class="text-xs sm:text-sm text-gray-900 leading-relaxed">
+                            Every project at TDV demanded creativity and collaboration, helping me become a confident, flexible and employable.
+                        </p>
+                    </div>
+
+                    <!-- Testimonial Card 4 -->
+                    <div class="testimonial-card">
+                        <div class="image-container">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop" alt="Muskaan Mahendru">
+                        </div>
+                        
+                        <div class="mt-4 mb-0">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Noise_logo.svg/320px-Noise_logo.svg.png" alt="Noise" class="company-logo" style="height: 32px;">
+                        </div>
+                        
+                        <div class="border-line"></div>
+                        
+                        <h3 class="font-semibold text-base sm:text-lg tracking-tight">MUSKAAN MAHENDRU</h3>
+                        
+                        <div class="border-line"></div>
+                        
+                        <p class="text-xs sm:text-sm text-gray-900 leading-relaxed">
+                            TDV's transdisciplinary approach prepared me for roles across industries, not just design, opening unexplored professional opportunities.
+                        </p>
+                    </div>
+
+                    <!-- Testimonial Card 5 -->
+                    <div class="testimonial-card">
+                        <div class="image-container">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop" alt="Nikhil Karamchandani">
+                        </div>
+                        
+                        <div class="mt-4 mb-0">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/HomeLane_Logo.svg/320px-HomeLane_Logo.svg.png" alt="HomeLane" class="company-logo" style="height: 28px;">
+                        </div>
+                        
+                        <div class="border-line"></div>
+                        
+                        <h3 class="font-semibold text-base sm:text-lg tracking-tight">NIKHIL<br>KARAMCHANDANI</h3>
+                        
+                        <div class="border-line"></div>
+                        
+                        <p class="text-xs sm:text-sm text-gray-900 leading-relaxed">
+                            Graduating at 22, I already had global exposure, internships, and industry connections—thanks to TDV's outcome-driven pedagogy.
+                        </p>
+                    </div>
+
+                    <!-- Testimonial Card 6 -->
+                    <div class="testimonial-card">
+                        <div class="image-container">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop" alt="Radhika Thapar">
+                        </div>
+                        
+                        <div class="mt-4 mb-0">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Tata_logo.svg/320px-Tata_logo.svg.png" alt="Tata" class="company-logo" style="height: 32px;">
+                        </div>
+                        
+                        <div class="border-line"></div>
+                        
+                        <h3 class="font-semibold text-base sm:text-lg tracking-tight">RADHIKA THAPAR</h3>
+                        
+                        <div class="border-line"></div>
+                        
+                        <p class="text-xs sm:text-sm text-gray-900 leading-relaxed">
+                            TDV helped me see design's impact, not just aesthetics. The thinking shaped my career and choices meaningfully.
+                        </p>
+                    </div>
+
+                    <!-- Testimonial Card 7 -->
+                    <div class="testimonial-card">
+                        <div class="image-container">
+                            <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop" alt="Shruti Sharma">
+                        </div>
+                        
+                        <div class="mt-4 mb-0">
+                            <span class="text-sm font-semibold">COMPANY LOGO</span>
+                        </div>
+                        
+                        <div class="border-line"></div>
+                        
+                        <h3 class="font-semibold text-base sm:text-lg tracking-tight">SHRUTI SHARMA</h3>
+                        
+                        <div class="border-line"></div>
+                        
+                        <p class="text-xs sm:text-sm text-gray-900 leading-relaxed">
+                            The collaborative environment at TDV taught me how to work with diverse teams and perspectives, a skill I use every day.
+                        </p>
+                    </div>
+
+                    <!-- Testimonial Card 8 -->
+                    <div class="testimonial-card">
+                        <div class="image-container">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop" alt="Arjun Mehta">
+                        </div>
+                        
+                        <div class="mt-4 mb-0">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/320px-Google_2015_logo.svg.png" alt="Google" class="company-logo" style="height: 30px;">
+                        </div>
+                        
+                        <div class="border-line"></div>
+                        
+                        <h3 class="font-semibold text-base sm:text-lg tracking-tight">ARJUN MEHTA</h3>
+                        
+                        <div class="border-line"></div>
+                        
+                        <p class="text-xs sm:text-sm text-gray-900 leading-relaxed">
+                            The hands-on learning approach at TDV gave me real-world experience that employers value. I felt job-ready from day one.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        const sliderTrack = document.getElementById('sliderTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        let currentIndex = 0;
+        let cardWidth = 0;
+        let gap = 20;
+        let totalOriginalCards = 0;
+        let cloneCount = 0;
+        let isTransitioning = false;
+        
+        // Clone cards for infinite loop effect
+        function setupInfiniteLoop() {
+            const cards = Array.from(sliderTrack.querySelectorAll('.testimonial-card'));
+            totalOriginalCards = cards.length;
+            
+            // Determine how many cards to clone (enough to fill viewport + buffer)
+            cloneCount = Math.min(totalOriginalCards, 6);
+            
+            // Clone last N cards and prepend them
+            for (let i = cloneCount - 1; i >= 0; i--) {
+                const clone = cards[totalOriginalCards - 1 - i].cloneNode(true);
+                clone.classList.add('clone', 'clone-prepend');
+                sliderTrack.insertBefore(clone, sliderTrack.firstChild);
+            }
+            
+            // Clone first N cards and append them
+            for (let i = 0; i < cloneCount; i++) {
+                const clone = cards[i].cloneNode(true);
+                clone.classList.add('clone', 'clone-append');
+                sliderTrack.appendChild(clone);
+            }
+            
+            // Start at the first real card (after prepended clones)
+            currentIndex = cloneCount;
+        }
+        
+        function calculateDimensions() {
+            const cards = document.querySelectorAll('.testimonial-card');
+            if (cards.length > 0) {
+                cardWidth = cards[0].offsetWidth;
+            }
+        }
+        
+        function setSliderPosition(index, animate = true) {
+            if (animate) {
+                sliderTrack.classList.add('animating');
+            } else {
+                sliderTrack.classList.remove('animating');
+            }
+            
+            const offset = index * (cardWidth + gap);
+            sliderTrack.style.transform = `translateX(-${offset}px)`;
+        }
+        
+        function slideNext() {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            
+            currentIndex++;
+            setSliderPosition(currentIndex, true);
+        }
+        
+        function slidePrev() {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            
+            currentIndex--;
+            setSliderPosition(currentIndex, true);
+        }
+        
+        // Handle the instant jump when reaching cloned cards
+        sliderTrack.addEventListener('transitionend', () => {
+            isTransitioning = false;
+            
+            // If we've scrolled to the appended clones, jump to the real cards at the start
+            if (currentIndex >= totalOriginalCards + cloneCount) {
+                currentIndex = cloneCount;
+                setSliderPosition(currentIndex, false);
+            }
+            
+            // If we've scrolled to the prepended clones, jump to the real cards at the end
+            if (currentIndex < cloneCount) {
+                currentIndex = totalOriginalCards + cloneCount - 1;
+                setSliderPosition(currentIndex, false);
+            }
+        });
+        
+        nextBtn.addEventListener('click', slideNext);
+        prevBtn.addEventListener('click', slidePrev);
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') slidePrev();
+            if (e.key === 'ArrowRight') slideNext();
+        });
+        
+        // Touch support
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let isDragging = false;
+        
+        sliderTrack.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            isDragging = true;
+        }, { passive: true });
+        
+        sliderTrack.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            touchEndX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        sliderTrack.addEventListener('touchend', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    slideNext();
+                } else {
+                    slidePrev();
+                }
+            }
+        }
+        
+        // Mouse drag support
+        let mouseDown = false;
+        let startX = 0;
+        
+        sliderTrack.addEventListener('mousedown', (e) => {
+            mouseDown = true;
+            startX = e.pageX;
+            sliderTrack.style.cursor = 'grabbing';
+        });
+        
+        sliderTrack.addEventListener('mouseleave', () => {
+            mouseDown = false;
+            sliderTrack.style.cursor = 'grab';
+        });
+        
+        sliderTrack.addEventListener('mouseup', () => {
+            mouseDown = false;
+            sliderTrack.style.cursor = 'grab';
+        });
+        
+        sliderTrack.addEventListener('mousemove', (e) => {
+            if (!mouseDown) return;
+            e.preventDefault();
+            const x = e.pageX;
+            const walk = (x - startX);
+            
+            if (Math.abs(walk) > 50) {
+                if (walk < 0) {
+                    slideNext();
+                } else {
+                    slidePrev();
+                }
+                mouseDown = false;
+            }
+        });
+        
+        function init() {
+            setupInfiniteLoop();
+            calculateDimensions();
+            setSliderPosition(currentIndex, false);
+        }
+        
+        window.addEventListener('load', init);
+        window.addEventListener('resize', () => {
+            calculateDimensions();
+            setSliderPosition(currentIndex, false);
+        });
+        
+        init();
+    </script>
 </body>
 </html>
