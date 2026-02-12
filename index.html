@@ -83,6 +83,35 @@
       color: #000;
     }
 
+    /* Hide industry navigation on desktop */
+    @media (min-width: 1024px) {
+      #industryPrevBtn,
+      #industryNextBtn {
+        display: none !important;
+      }
+      
+      #industryContainer {
+        display: grid !important;
+        overflow: visible !important;
+      }
+    }
+    
+    /* Ensure industry container scrolls on mobile */
+    @media (max-width: 1023px) {
+      #industryContainer {
+        display: flex !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      
+      #industryContainer::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
     @keyframes scroll {
       0% {
         transform: translateX(0);
@@ -247,7 +276,7 @@
   <section class="py-10 sm:px-8 px-4 bg-[#f2f2f2]">
     <div class="max-w-7xl mx-auto">
       <!-- Highlights Label -->
-      <div class="mb-8">
+      <div class="mb-4 sm:mb-8">
         <p class="text-sm font-medium">(HIGHLIGHTS)</p>
       </div>
 
@@ -991,6 +1020,73 @@
     }
   </script>
 
+  <script>
+    // Industry Focus Mobile Navigation
+    document.addEventListener('DOMContentLoaded', function() {
+      const industryContainer = document.getElementById('industryContainer');
+      const industryPrevBtn = document.getElementById('industryPrevBtn');
+      const industryNextBtn = document.getElementById('industryNextBtn');
+
+      if (industryContainer && industryPrevBtn && industryNextBtn) {
+        // Calculate scroll amount based on screen size (mobile only)
+        function getIndustryScrollAmount() {
+          if (window.innerWidth >= 1024) return 0; // Desktop - no scroll
+          const cards = industryContainer.querySelectorAll('.group');
+          if (cards.length === 0) return 0;
+          const cardWidth = cards[0].offsetWidth;
+          const gap = window.innerWidth >= 640 ? 20 : 16;
+          return cardWidth + gap;
+        }
+
+        // Scroll previous
+        industryPrevBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (window.innerWidth < 1024) {
+            const scrollAmount = getIndustryScrollAmount();
+            industryContainer.scrollBy({
+              left: -scrollAmount,
+              behavior: 'smooth'
+            });
+          }
+        });
+
+        // Scroll next
+        industryNextBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (window.innerWidth < 1024) {
+            const scrollAmount = getIndustryScrollAmount();
+            industryContainer.scrollBy({
+              left: scrollAmount,
+              behavior: 'smooth'
+            });
+          }
+        });
+
+      // Update button states based on scroll position (mobile only)
+      function updateIndustryButtonStates() {
+        if (window.innerWidth >= 1024) return; // Desktop - no need to update
+        
+        const scrollLeft = industryContainer.scrollLeft;
+        const maxScroll = industryContainer.scrollWidth - industryContainer.clientWidth;
+
+        industryPrevBtn.disabled = scrollLeft <= 1;
+        industryNextBtn.disabled = scrollLeft >= maxScroll - 1;
+      }
+
+      // Listen to scroll events
+      industryContainer.addEventListener('scroll', updateIndustryButtonStates);
+
+      // Initial state
+      updateIndustryButtonStates();
+
+      // Update on window resize
+      window.addEventListener('resize', updateIndustryButtonStates);
+      }
+    });
+  </script>
+
   <!-- Industry Focus Section -->
   <div class="bg-[#F1EFED] py-12 sm:py-16">
     <!-- Header Section -->
@@ -1012,34 +1108,55 @@
     </div>
 
     <!-- Two Column Cards Section -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
-      <!-- Card 1 - EXOLABS -->
-      <div class="group">
-        <div class="overflow-hidden mb-6">
-          <img src="/assets/images/industry-focus1.png" alt="Students working together"
-            class="w-full h-full sm:h-[328px] transition-transform duration-500 group-hover:scale-105">
-        </div>
-        <div class="border-t border-gray-400 pt-6">
-          <h3 class="text-xl sm:text-2xl font-bold mb-4">EXOLABS</h3>
-          <p class="text-sm sm:text-base leading-relaxed text-gray-700">
-            Access a platform to nurture creative entrepreneurship, develop ventures, test ideas, gain mentorship, and
-            build creative businesses
-          </p>
-        </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Mobile Navigation Arrows -->
+      <div class="flex justify-end gap-3 mb-4 lg:hidden">
+        <button id="industryPrevBtn"
+          class="arrow-btn w-10 h-10 flex items-center justify-center border border-black">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button id="industryNextBtn"
+          class="arrow-btn w-10 h-10 flex items-center justify-center border border-black">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
       </div>
 
-      <!-- Card 2 - TASKBOXES -->
-      <div class="group">
-        <div class="overflow-hidden mb-6">
-          <img src="/assets/images/industry-focus2.png" alt="Team collaboration"
-            class="w-full h-full sm:h-[328px] transition-transform duration-500 group-hover:scale-105">
-        </div>
-        <div class="border-t border-gray-400 pt-6">
-          <h3 class="text-xl sm:text-2xl font-bold mb-4">TASKBOXES</h3>
-          <p class="text-sm sm:text-base leading-relaxed text-gray-700">
-            Collaborate with industry partners on real projects, gaining authentic experience, adding real-world
-            projects to portfolio, and experiencing professional practice.
-          </p>
+      <!-- Cards Container - Scrollable on mobile, grid on desktop -->
+      <div class="relative">
+        <div id="industryContainer" class="timeline-container flex gap-4 md:gap-5 lg:gap-6 lg:grid lg:grid-cols-2 lg:gap-10">
+          <!-- Card 1 - EXOLABS -->
+          <div class="group timeline-card w-full lg:w-auto">
+            <div class="overflow-hidden mb-6">
+              <img src="/assets/images/industry-focus1.png" alt="Students working together"
+                class="w-full h-full sm:h-[328px] transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <div class="border-t border-gray-400 pt-6">
+              <h3 class="text-xl sm:text-2xl font-bold mb-4">EXOLABS</h3>
+              <p class="text-sm sm:text-base leading-relaxed text-gray-700">
+                Access a platform to nurture creative entrepreneurship, develop ventures, test ideas, gain mentorship, and
+                build creative businesses
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2 - TASKBOXES -->
+          <div class="group timeline-card w-full lg:w-auto">
+            <div class="overflow-hidden mb-6">
+              <img src="/assets/images/industry-focus2.png" alt="Team collaboration"
+                class="w-full h-full sm:h-[328px] transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <div class="border-t border-gray-400 pt-6">
+              <h3 class="text-xl sm:text-2xl font-bold mb-4">TASKBOXES</h3>
+              <p class="text-sm sm:text-base leading-relaxed text-gray-700">
+                Collaborate with industry partners on real projects, gaining authentic experience, adding real-world
+                projects to portfolio, and experiencing professional practice.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
