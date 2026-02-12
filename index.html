@@ -518,6 +518,76 @@
     // Update on window resize
     window.addEventListener('resize', updateButtonStates);
 
+    // Auto-scroll functionality
+    let timelineAutoScrollInterval;
+    let isTimelinePaused = false;
+    let isTimelineAutoScrolling = false;
+
+    function startTimelineAutoScroll() {
+      if (timelineAutoScrollInterval) {
+        clearInterval(timelineAutoScrollInterval);
+      }
+      
+      timelineAutoScrollInterval = setInterval(() => {
+        if (isTimelinePaused) return;
+        
+        isTimelineAutoScrolling = true;
+        const scrollLeft = container.scrollLeft;
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        
+        if (scrollLeft >= maxScroll - 1) {
+          // Reset to beginning instantly for seamless loop
+          container.scrollTo({
+            left: 0,
+            behavior: 'auto'
+          });
+          // Small delay then continue
+          setTimeout(() => {
+            isTimelineAutoScrolling = false;
+          }, 100);
+        } else {
+          // Scroll forward
+          const scrollAmount = getScrollAmount();
+          container.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+          });
+          setTimeout(() => {
+            isTimelineAutoScrolling = false;
+          }, 500);
+        }
+      }, 3000); // Auto-scroll every 3 seconds
+    }
+
+    // Pause on hover
+    container.addEventListener('mouseenter', () => {
+      isTimelinePaused = true;
+    });
+
+    container.addEventListener('mouseleave', () => {
+      isTimelinePaused = false;
+    });
+
+    // Only pause on manual user scroll, not auto-scroll
+    let scrollTimeout;
+    container.addEventListener('scroll', () => {
+      if (isTimelineAutoScrolling) return; // Ignore auto-scroll events
+      
+      clearTimeout(scrollTimeout);
+      isTimelinePaused = true;
+      clearInterval(timelineAutoScrollInterval);
+      timelineAutoScrollInterval = null;
+      
+      // Resume after 5 seconds of no interaction
+      scrollTimeout = setTimeout(() => {
+        isTimelinePaused = false;
+        startTimelineAutoScroll();
+      }, 5000);
+    });
+
+    // Start auto-scroll
+    startTimelineAutoScroll();
+
     // Touch/Drag scroll support for desktop
     let isDown = false;
     let startX;
@@ -1048,6 +1118,106 @@
 
       // Update on window resize
       window.addEventListener('resize', updateIndustryButtonStates);
+
+      // Auto-scroll functionality (mobile only)
+      let industryAutoScrollInterval;
+      let isIndustryPaused = false;
+      let isIndustryAutoScrolling = false;
+      let lastUserScrollTime = 0;
+
+      function startIndustryAutoScroll() {
+        if (window.innerWidth >= 1024) return; // Desktop - no auto-scroll
+        
+        // Clear any existing interval
+        if (industryAutoScrollInterval) {
+          clearInterval(industryAutoScrollInterval);
+        }
+        
+        industryAutoScrollInterval = setInterval(() => {
+          // Check if paused or desktop
+          if (isIndustryPaused || window.innerWidth >= 1024) return;
+          
+          // Check if user recently scrolled manually
+          const timeSinceLastScroll = Date.now() - lastUserScrollTime;
+          if (timeSinceLastScroll < 2000) return; // Wait 2 seconds after user scroll
+          
+          isIndustryAutoScrolling = true;
+          const scrollLeft = industryContainer.scrollLeft;
+          const maxScroll = industryContainer.scrollWidth - industryContainer.clientWidth;
+          
+          if (scrollLeft >= maxScroll - 1) {
+            // Reset to beginning instantly for seamless infinite loop
+            industryContainer.scrollTo({
+              left: 0,
+              behavior: 'auto'
+            });
+            // Reset flag after a brief moment
+            setTimeout(() => {
+              isIndustryAutoScrolling = false;
+            }, 50);
+          } else {
+            // Scroll forward continuously
+            const scrollAmount = getIndustryScrollAmount();
+            industryContainer.scrollBy({
+              left: scrollAmount,
+              behavior: 'smooth'
+            });
+            // Reset flag after scroll completes
+            setTimeout(() => {
+              isIndustryAutoScrolling = false;
+            }, 600);
+          }
+        }, 3000); // Auto-scroll every 3 seconds
+      }
+
+      // Pause on hover
+      industryContainer.addEventListener('mouseenter', () => {
+        isIndustryPaused = true;
+      });
+
+      industryContainer.addEventListener('mouseleave', () => {
+        isIndustryPaused = false;
+      });
+
+      // Track user scroll vs auto-scroll
+      let industryScrollTimeout;
+      industryContainer.addEventListener('scroll', () => {
+        // If it's an auto-scroll, don't interfere
+        if (isIndustryAutoScrolling) {
+          return;
+        }
+        
+        // This is a user scroll - pause auto-scroll
+        lastUserScrollTime = Date.now();
+        clearTimeout(industryScrollTimeout);
+        isIndustryPaused = true;
+        
+        // Clear and restart interval after user stops scrolling
+        clearInterval(industryAutoScrollInterval);
+        industryAutoScrollInterval = null;
+        
+        // Resume after 5 seconds of no interaction
+        industryScrollTimeout = setTimeout(() => {
+          isIndustryPaused = false;
+          if (window.innerWidth < 1024) {
+            startIndustryAutoScroll();
+          }
+        }, 5000);
+      });
+
+      // Start auto-scroll on mobile
+      if (window.innerWidth < 1024) {
+        startIndustryAutoScroll();
+      }
+
+      // Restart on resize
+      window.addEventListener('resize', () => {
+        clearInterval(industryAutoScrollInterval);
+        industryAutoScrollInterval = null;
+        if (window.innerWidth < 1024) {
+          startIndustryAutoScroll();
+        }
+      });
       }
     });
   </script>
