@@ -94,6 +94,13 @@
         display: grid !important;
         overflow: visible !important;
       }
+      
+      /* Industry cards full width on desktop */
+      #industryContainer .timeline-card {
+        min-width: 100% !important;
+        max-width: 100% !important;
+        width: 100% !important;
+      }
     }
     
     /* Ensure industry container scrolls on mobile */
@@ -136,7 +143,7 @@
   <!-- Header Section -->
   <header class="border-b border-gray-200 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
-      <div class="flex items-center gap-10">
+      <div class="flex items-center gap-10 max-md:justify-between">
         <!-- The Design Village Logo - Left -->
         <div class="flex-shrink-0">
           <a class="block">
@@ -625,22 +632,6 @@
 
     <!-- Image and Postgraduate Module Section - Slider -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Navigation Arrows -->
-      <div class="flex justify-end gap-3 md:gap-4 mb-8 md:mb-12">
-        <button id="pgmPrevBtn"
-          class="arrow-btn w-10 h-10 md:w-12 md:h-12 flex items-center justify-center border border-black">
-          <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-        <button id="pgmNextBtn"
-          class="arrow-btn w-10 h-10 md:w-12 md:h-12 flex items-center justify-center border border-black">
-          <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-      </div>
-
       <!-- Cards Container -->
       <div class="relative">
         <div id="pgmContainer" class="timeline-container flex gap-4 md:gap-5 lg:gap-6">
@@ -666,32 +657,6 @@
                     Secure your career prospects by preparing for market-entry through TDV's flagship Professional Development
                     Module that focuses on your personality, creative portfolio, software skillset and a deep understanding of
                     the profession
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 2: Undergraduate Creative Residency -->
-          <div class="pgm-card w-full">
-            <div class="flex flex-col md:flex-row md:gap-6 lg:gap-8">
-              <!-- Image - Left on desktop, top on mobile -->
-              <div class="mb-3 md:mb-0 md:flex-shrink-0">
-                <img src="/assets/images/whystudy-banner.jpg" alt="Undergraduate Creative Residency"
-                  class="w-full h-auto md:w-[500px] md:h-[300px] object-cover">
-              </div>
-              
-              <!-- Content - Right on desktop, bottom on mobile -->
-              <div class="flex-1">
-                <div class="border-t border-black pt-3 md:pt-4 lg:pt-6 pb-2 md:pb-3 hidden md:block">
-                  <h3 class="text-base sm:text-lg font-bold leading-tight">UNDERGRADUATE CREATIVE RESIDENCY</h3>
-                </div>
-                <div class="pt-3 md:hidden">
-                  <h3 class="text-base sm:text-lg font-bold leading-tight">UNDERGRADUATE CREATIVE RESIDENCY</h3>
-                </div>
-                <div class="border-black pt-2 md:pt-3">
-                  <p class="text-xs md:text-sm leading-relaxed">
-                    Experience an all-inclusive 2-month Creative Residency at TDV's Campus in Milan, immersing yourself in the world's leading hub of fashion, product and space design, and drawing inspiration from Italy's rich creative heritage
                   </p>
                 </div>
               </div>
@@ -1129,7 +1094,7 @@
       <div class="relative">
         <div id="industryContainer" class="timeline-container flex gap-4 md:gap-5 lg:gap-6 lg:grid lg:grid-cols-2 lg:gap-10">
           <!-- Card 1 - EXOLABS -->
-          <div class="group timeline-card w-full lg:w-auto">
+          <div class="group timeline-card w-full lg:w-full">
             <div class="overflow-hidden mb-6">
               <img src="/assets/images/industry-focus1.png" alt="Students working together"
                 class="w-full h-full sm:h-[328px] transition-transform duration-500 group-hover:scale-105">
@@ -1144,7 +1109,7 @@
           </div>
 
           <!-- Card 2 - TASKBOXES -->
-          <div class="group timeline-card w-full lg:w-auto">
+          <div class="group timeline-card w-full lg:w-full">
             <div class="overflow-hidden mb-6">
               <img src="/assets/images/industry-focus2.png" alt="Team collaboration"
                 class="w-full h-full sm:h-[328px] transition-transform duration-500 group-hover:scale-105">
@@ -2056,7 +2021,7 @@
       <div class="space-y-8">
         <!-- Steps to Apply -->
         <div>
-          <h2 class="text-xl font-bold mb-4">STEPS TO APPLY</h2>
+          <h2 class="text-xl font-bold mb-4 border-t border-black pt-4 sm:pt-0 sm:border-t-0">STEPS TO APPLY</h2>
           <p class="text-base leading-relaxed mb-4">
             Applicants can register online with TDV Admissions Portal using their <span
               class="font-semibold">basic</span> credentials. We recommend applicants to use their
@@ -2074,7 +2039,7 @@
 
         <!-- Entrance Process -->
         <div>
-          <h2 class="text-xl font-bold mb-4">ENTRANCE PROCESS: TDV ACCEPTANCE CHALLENGE</h2>
+          <h2 class="text-xl font-bold mb-4 border-t border-black pt-4">ENTRANCE PROCESS: TDV ACCEPTANCE CHALLENGE</h2>
           <p class="text-base leading-relaxed">
             The Design Village's approach to admission for its programmes is built upon the institution's
             core intent to change the paradigm of design education. We are looking for students who not just
