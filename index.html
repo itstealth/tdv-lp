@@ -45,6 +45,25 @@
       }
     }
 
+    /* Postgraduate Module Cards - Full width on desktop */
+    .pgm-card {
+      min-width: calc(83.33% - 12px);
+      flex-shrink: 0;
+    }
+
+    @media (min-width: 640px) {
+      .pgm-card {
+        min-width: calc(40% - 16px);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .pgm-card {
+        min-width: 100%;
+        max-width: 100%;
+      }
+    }
+
     .arrow-btn {
       transition: all 0.3s ease;
     }
@@ -225,7 +244,7 @@
   </section>
 
   <!-- Highlights Section -->
-  <section class="py-16 sm:px-8 px-4 bg-[#f2f2f2]">
+  <section class="py-10 sm:px-8 px-4 bg-[#f2f2f2]">
     <div class="max-w-7xl mx-auto">
       <!-- Highlights Label -->
       <div class="mb-8">
@@ -234,7 +253,7 @@
 
       <!-- Main Heading -->
       <div class="sm:mb-20 mb-10">
-        <h1 class="text-2xl md:text-3xl lg:text-4xl font-medium sm:text-right leading-tight">
+        <h1 class="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-medium sm:text-right leading-tight">
           Unique design school founded by designers in India,<br class="sm:block hidden">
           after extensive research into leading global institutions such as Aalto,<br class="sm:block hidden">
           Harvard, Stanford, Politecnico di Milano, RCA, Tongji University, and TU<br class="sm:block hidden">
@@ -247,7 +266,7 @@
         <!-- Forbes Award -->
         <div class="border-t border-black pt-6">
           <div class="mb-6">
-            <img src="./assets/images/forbes-logo.png" alt="Forbes" class="h-10 w-auto" />
+            <img src="./assets/images/forbes-logo.png" alt="Forbes" class="h-6 sm:h-10 w-auto" />
           </div>
           <p class="text-base leading-relaxed">
             Award-winning Campus located within the<br>
@@ -258,7 +277,7 @@
         <!-- Don Norman Design Award -->
         <div class="border-t border-black pt-6">
           <div class="sm:mb-2 mb-6">
-            <img src="./assets/images/don-norman-logo.png" alt="Don Norman Design Award" class="h-14 w-auto" />
+            <img src="./assets/images/don-norman-logo.png" alt="Don Norman Design Award" class="h-8 sm:h-14 w-auto" />
           </div>
           <p class="text-base leading-relaxed">
             Recognition at Inaugural Award Ceremony for<br>
@@ -269,7 +288,7 @@
         <!-- Fab Foundation -->
         <div class="border-t border-black pt-6">
           <div class="mb-6">
-            <img src="./assets/images/fabfoundation-logo.png" alt="fabfoundation" class="h-10 w-auto" />
+            <img src="./assets/images/fabfoundation-logo.png" alt="fabfoundation" class="h-6 sm:h-10 w-auto" />
           </div>
           <p class="text-base leading-relaxed">
             Accredited labs, a US non-profit emerged from<br>
@@ -505,7 +524,7 @@
 
   <!-- Why Study at The Design Village Section -->
 
-  <div class="bg-[#F1EFED] py-16">
+  <div class="bg-[#F1EFED] py-10 md:py-14">
     <!-- Header Section -->
     <div
       class="flex flex-col sm:flex-row justify-between items-start max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 gap-6 mb-8 sm:mb-12 lg:mb-16">
@@ -517,7 +536,7 @@
         </h1>
       </div>
       <button
-        class="w-full sm:w-auto border border-black px-6 py-2 rounded-lg text-sm hover:bg-black hover:text-white transition-colors flex items-center justify-center gap-2 whitespace-nowrap">
+        class="w-auto border border-black px-6 py-2 rounded-lg text-sm hover:bg-black hover:text-white transition-colors flex items-center justify-center gap-2 whitespace-nowrap">
         Download Brochure
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -575,23 +594,80 @@
       </div>
     </div>
 
-    <!-- Image and Postgraduate Module Section -->
-    <div
-      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-start">
-      <!-- Image -->
-      <div class="order-2 lg:order-1">
-        <img src="/assets/images/why.png" alt="Students group photo" class="w-full h-auto rounded-none shadow-lg">
+    <!-- Image and Postgraduate Module Section - Slider -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Navigation Arrows -->
+      <div class="flex justify-end gap-3 md:gap-4 mb-8 md:mb-12">
+        <button id="pgmPrevBtn"
+          class="arrow-btn w-10 h-10 md:w-12 md:h-12 flex items-center justify-center border border-black">
+          <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button id="pgmNextBtn"
+          class="arrow-btn w-10 h-10 md:w-12 md:h-12 flex items-center justify-center border border-black">
+          <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
       </div>
 
-      <!-- Postgraduate Module -->
-      <div class="order-1 lg:order-2">
-        <div class="border-t border-black pt-4 sm:pt-6">
-          <h3 class="text-base sm:text-lg font-bold mb-3 sm:mb-4">POSTGRADUATE PROFESSIONAL MODULE</h3>
-          <p class="text-sm leading-relaxed text-gray-700">
-            Secure your career prospects by preparing for market-entry through TDV's flagship Professional Development
-            Module that focuses on your personality, creative portfolio, software skillset and a deep understanding of
-            the profession
-          </p>
+      <!-- Cards Container -->
+      <div class="relative">
+        <div id="pgmContainer" class="timeline-container flex gap-4 md:gap-5 lg:gap-6">
+          <!-- Card 1: Postgraduate Professional Module -->
+          <div class="pgm-card w-full">
+            <div class="flex flex-col md:flex-row md:gap-6 lg:gap-8">
+              <!-- Image - Left on desktop, top on mobile -->
+              <div class="mb-3 md:mb-0 md:flex-shrink-0">
+                <img src="/assets/images/why.png" alt="Postgraduate Professional Module"
+                  class="w-full h-auto   object-cover">
+              </div>
+              
+              <!-- Content - Right on desktop, bottom on mobile -->
+              <div class="flex-1">
+                <div class="border-t border-black pt-3 md:pt-4 lg:pt-6 pb-2 md:pb-3 hidden md:block">
+                  <h3 class="text-base sm:text-lg font-bold leading-tight">POSTGRADUATE PROFESSIONAL MODULE</h3>
+                </div>
+                <div class=" pt-3 md:hidden">
+                  <h3 class="text-base sm:text-lg font-bold leading-tight">POSTGRADUATE PROFESSIONAL MODULE</h3>
+                </div>
+                <div class=" border-black pt-2 md:pt-3">
+                  <p class="text-xs md:text-sm leading-relaxed">
+                    Secure your career prospects by preparing for market-entry through TDV's flagship Professional Development
+                    Module that focuses on your personality, creative portfolio, software skillset and a deep understanding of
+                    the profession
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Undergraduate Creative Residency -->
+          <div class="pgm-card w-full">
+            <div class="flex flex-col md:flex-row md:gap-6 lg:gap-8">
+              <!-- Image - Left on desktop, top on mobile -->
+              <div class="mb-3 md:mb-0 md:flex-shrink-0">
+                <img src="/assets/images/whystudy-banner.jpg" alt="Undergraduate Creative Residency"
+                  class="w-full h-auto object-cover">
+              </div>
+              
+              <!-- Content - Right on desktop, bottom on mobile -->
+              <div class="flex-1">
+                <div class="border-t border-black pt-3 md:pt-4 lg:pt-6 pb-2 md:pb-3 hidden md:block">
+                  <h3 class="text-base sm:text-lg font-bold leading-tight">UNDERGRADUATE CREATIVE RESIDENCY</h3>
+                </div>
+                <div class="pt-3 md:hidden">
+                  <h3 class="text-base sm:text-lg font-bold leading-tight">UNDERGRADUATE CREATIVE RESIDENCY</h3>
+                </div>
+                <div class="border-black pt-2 md:pt-3">
+                  <p class="text-xs md:text-sm leading-relaxed">
+                    Experience an all-inclusive 2-month Creative Residency at TDV's Campus in Milan, immersing yourself in the world's leading hub of fashion, product and space design, and drawing inspiration from Italy's rich creative heritage
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -629,6 +705,9 @@
           </button>
           <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
             <div class="pb-6 pr-12 text-sm sm:text-base leading-relaxed text-gray-700">
+              <div class="mb-4">
+                <img src="/assets/images/why.png" alt="Communication & Interaction Design" class="w-full h-auto rounded-sm">
+              </div>
               <p class="mb-4">This programme focuses on creating meaningful digital and physical experiences through
                 user-centered design methodologies. Students learn to design interactive systems, digital products, and
                 communication strategies that connect brands with their audiences.</p>
@@ -647,6 +726,9 @@
           </button>
           <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
             <div class="pb-6 pr-12 text-sm sm:text-base leading-relaxed text-gray-700">
+              <div class="mb-4">
+                <img src="/assets/images/why.png" alt="Fashion & Textile Design" class="w-full h-auto rounded-sm">
+              </div>
               <p class="mb-4">This programme prepares designers to innovate in the fashion and textile industry through
                 sustainable practices, advanced material research, and contemporary design thinking. Students explore
                 the complete fashion cycle from concept to runway.</p>
@@ -665,6 +747,9 @@
           </button>
           <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
             <div class="pb-6 pr-12 text-sm sm:text-base leading-relaxed text-gray-700">
+              <div class="mb-4">
+                <img src="/assets/images/why.png" alt="Interior & Space Design" class="w-full h-auto rounded-sm">
+              </div>
               <p class="mb-4">This programme develops expertise in creating functional, aesthetic, and sustainable
                 interior environments. Students learn to transform spaces through innovative design solutions that
                 enhance human experience and wellbeing.</p>
@@ -683,6 +768,9 @@
           </button>
           <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
             <div class="pb-6 pr-12 text-sm sm:text-base leading-relaxed text-gray-700">
+              <div class="mb-4">
+                <img src="/assets/images/why.png" alt="Product & Industrial Design" class="w-full h-auto rounded-sm">
+              </div>
               <p class="mb-4">This programme trains designers to create innovative products that balance functionality,
                 aesthetics, and user needs. Students develop skills in designing everything from consumer electronics to
                 furniture and transportation.</p>
@@ -701,6 +789,9 @@
           </button>
           <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
             <div class="pb-6 pr-12 text-sm sm:text-base leading-relaxed text-gray-700">
+              <div class="mb-4">
+                <img src="/assets/images/why.png" alt="Strategic Design & Management" class="w-full h-auto rounded-sm">
+              </div>
               <p class="mb-4">This programme bridges design and business strategy, preparing leaders who can drive
                 innovation and manage design teams. Students learn to integrate design thinking into organizational
                 strategy and business operations.</p>
@@ -719,6 +810,9 @@
           </button>
           <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
             <div class="pb-6 pr-12 text-sm sm:text-base leading-relaxed text-gray-700">
+              <div class="mb-4">
+                <img src="/assets/images/why.png" alt="Transdisciplinary Design" class="w-full h-auto rounded-sm">
+              </div>
               <p class="mb-4">This programme offers a flexible, interdisciplinary approach where students combine
                 multiple design disciplines to solve complex problems. It's ideal for those seeking to work at the
                 intersection of various design fields.</p>
@@ -757,6 +851,104 @@
         }
       });
     });
+  </script>
+
+  <script>
+    // Postgraduate Module Slider functionality (same as timeline)
+    const pgmContainer = document.getElementById('pgmContainer');
+    const pgmPrevBtn = document.getElementById('pgmPrevBtn');
+    const pgmNextBtn = document.getElementById('pgmNextBtn');
+
+    if (pgmContainer && pgmPrevBtn && pgmNextBtn) {
+      // Calculate scroll amount based on screen size
+      function getPgmScrollAmount() {
+        const cardWidth = pgmContainer.querySelector('.pgm-card').offsetWidth;
+        const gap = window.innerWidth >= 1024 ? 24 : window.innerWidth >= 768 ? 20 : 16;
+        return cardWidth + gap;
+      }
+
+      // Scroll previous
+      pgmPrevBtn.addEventListener('click', () => {
+        pgmContainer.scrollBy({
+          left: -getPgmScrollAmount(),
+          behavior: 'smooth'
+        });
+      });
+
+      // Scroll next
+      pgmNextBtn.addEventListener('click', () => {
+        pgmContainer.scrollBy({
+          left: getPgmScrollAmount(),
+          behavior: 'smooth'
+        });
+      });
+
+      // Update button states based on scroll position
+      function updatePgmButtonStates() {
+        const scrollLeft = pgmContainer.scrollLeft;
+        const maxScroll = pgmContainer.scrollWidth - pgmContainer.clientWidth;
+
+        // Disable/enable buttons
+        pgmPrevBtn.disabled = scrollLeft <= 1;
+        pgmNextBtn.disabled = scrollLeft >= maxScroll - 1;
+      }
+
+      // Listen to scroll events
+      pgmContainer.addEventListener('scroll', updatePgmButtonStates);
+
+      // Initial state
+      updatePgmButtonStates();
+
+      // Update on window resize
+      window.addEventListener('resize', updatePgmButtonStates);
+
+      // Touch/Drag scroll support for desktop
+      let pgmIsDown = false;
+      let pgmStartX;
+      let pgmScrollLeft;
+
+      pgmContainer.addEventListener('mousedown', (e) => {
+        pgmIsDown = true;
+        pgmContainer.style.cursor = 'grabbing';
+        pgmStartX = e.pageX - pgmContainer.offsetLeft;
+        pgmScrollLeft = pgmContainer.scrollLeft;
+      });
+
+      pgmContainer.addEventListener('mouseleave', () => {
+        pgmIsDown = false;
+        pgmContainer.style.cursor = 'default';
+      });
+
+      pgmContainer.addEventListener('mouseup', () => {
+        pgmIsDown = false;
+        pgmContainer.style.cursor = 'default';
+      });
+
+      pgmContainer.addEventListener('mousemove', (e) => {
+        if (!pgmIsDown) return;
+        e.preventDefault();
+        const x = e.pageX - pgmContainer.offsetLeft;
+        const walk = (x - pgmStartX) * 2;
+        pgmContainer.scrollLeft = pgmScrollLeft - walk;
+      });
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        // Only handle if not already handled by timeline
+        if (e.key === 'ArrowLeft' && document.activeElement !== pgmPrevBtn && document.activeElement !== pgmNextBtn) {
+          // Check if pgm section is in view
+          const pgmRect = pgmContainer.getBoundingClientRect();
+          if (pgmRect.top < window.innerHeight && pgmRect.bottom > 0) {
+            pgmPrevBtn.click();
+          }
+        } else if (e.key === 'ArrowRight' && document.activeElement !== pgmPrevBtn && document.activeElement !== pgmNextBtn) {
+          const pgmRect = pgmContainer.getBoundingClientRect();
+          if (pgmRect.top < window.innerHeight && pgmRect.bottom > 0) {
+            pgmNextBtn.click();
+          }
+        }
+      });
+    }
   </script>
 
   <!-- Industry Focus Section -->
