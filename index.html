@@ -2443,7 +2443,7 @@
       if(campusSelect && courseSelect) {
         const campuses = Object.keys(campusData);
         const campusLabels = {
-          "Master of Design": "M.Des"
+          "Master of Design": "Master of Design"
         };
         
         campuses.forEach(campus => {
@@ -2574,7 +2574,11 @@
           }
 
           try {
-            const response = await fetch('http://localhost:8000/api/register', {
+            // Try multiple path variations if one fails
+            const apiPath = 'api/register.php'; // Try without leading ./
+            
+            
+            const response = await fetch(apiPath, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -2582,9 +2586,28 @@
               body: JSON.stringify(formData)
             });
 
+            // Check if response is ok before trying to parse JSON
+            if (!response.ok) {
+              // Try to get error message
+              let errorMessage = `HTTP Error ${response.status}: ${response.statusText}`;
+              try {
+                const errorData = await response.json();
+                errorMessage = errorData.message || errorMessage;
+              } catch (e) {
+                // If JSON parsing fails, use status text
+              }
+              console.error('Response error:', {
+                status: response.status,
+                statusText: response.statusText,
+                url: response.url
+              });
+              alert(`Registration failed: ${errorMessage}`);
+              return;
+            }
+
             const result = await response.json();
             
-            if (response.ok && result.status === 'Success') {
+            if (result.status === 'Success') {
               // Success - redirect to thank you page
               window.location.href = 'thank-you.html';
             } else {
@@ -2593,8 +2616,8 @@
               console.error('Error:', result);
             }
           } catch (error) {
-            console.error('Error:', error);
-            alert('An error occurred. Please try again.');
+            console.error('Network/Parse Error:', error);
+            alert('An error occurred. Please check your connection and try again.');
           }
         });
       }

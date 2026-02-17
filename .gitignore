@@ -1,0 +1,47 @@
+# =========================
+# Secrets & Config
+# =========================
+/includes/config.php
+.env
+.env.local
+.env.production
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# =========================
+# Node (if ever used)
+# =========================
+node_modules/
+dist/
+build/
+
+# =========================
+# Vendor (if composer used)
+# =========================
+vendor/
+
+# =========================
+# Temporary Files
+# =========================
+*.tmp
+*.bak
