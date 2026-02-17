@@ -8,32 +8,31 @@ header("Access-Control-Allow-Headers: *");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Content-Type: application/json");
 
-// Handle preflight (CORS)
+// Handle CORS preflight
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit();
 }
 
 // ==============================
-// DEBUG INFO (optional)
+// LOAD SECRET KEY FROM CONFIG
 // ==============================
-// file_put_contents("debug.txt", print_r($_SERVER, true));
+require_once __DIR__ . '/../includes/config.php';
 
-// ==============================
-// LOAD SECRET KEY
-// ==============================
+if (!defined('SECRET_KEY')) {
+    http_response_code(500);
+    echo json_encode([
+        "status" => "Error",
+        "message" => "SECRET_KEY not defined in config.php"
+    ]);
+    exit();
+}
 
-// If you have config file
-// require_once __DIR__ . '/../includes/config.php';
-// $SECRET_KEY = SECRET_KEY;
-
-// OR directly define for now (DEV)
-$SECRET_KEY = "YOUR_SECRET_KEY_HERE";
+$SECRET_KEY = SECRET_KEY;
 
 // ==============================
 // GET INPUT (JSON or FORM)
 // ==============================
-
 $rawInput = file_get_contents("php://input");
 $input = json_decode($rawInput, true);
 
@@ -48,7 +47,7 @@ if (!$input) {
     echo json_encode([
         "status" => "Error",
         "message" => "No input received",
-        "debug_method" => $_SERVER['REQUEST_METHOD']
+        "method" => $_SERVER['REQUEST_METHOD']
     ]);
     exit();
 }
@@ -56,7 +55,6 @@ if (!$input) {
 // ==============================
 // REQUIRED FIELDS
 // ==============================
-
 $requiredFields = [
     'source',
     'college_id',
@@ -82,7 +80,6 @@ foreach ($requiredFields as $field) {
 // ==============================
 // PREPARE PAYLOAD
 // ==============================
-
 $payload = [
     "secret_key" => $SECRET_KEY,
     "source" => trim($input['source']),
@@ -95,7 +92,7 @@ $payload = [
     "field_state_new" => trim($input['field_state_new'])
 ];
 
-// Optional
+// Optional fields
 if (!empty($input['medium'])) {
     $payload['medium'] = trim($input['medium']);
 }
@@ -107,7 +104,6 @@ if (!empty($input['campaign'])) {
 // ==============================
 // CALL EXTERNAL API
 // ==============================
-
 $ch = curl_init();
 
 curl_setopt_array($ch, [
