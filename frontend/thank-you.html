@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You - The Design Village</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    .animate-fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    .animate-scale-in {
+      animation: scaleIn 0.6s ease-out forwards;
+    }
+
+    .animate-pulse-slow {
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .delay-200 {
+      animation-delay: 0.2s;
+      opacity: 0;
+    }
+
+    .delay-400 {
+      animation-delay: 0.4s;
+      opacity: 0;
+    }
+
+    .delay-600 {
+      animation-delay: 0.6s;
+      opacity: 0;
+    }
+
+    .delay-800 {
+      animation-delay: 0.8s;
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body class="antialiased bg-white">
+  <!-- Header Section -->
+  <header class="border-b border-gray-200 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
+      <div class="flex items-center gap-10 max-md:justify-between">
+        <!-- The Design Village Logo - Left -->
+        <div class="flex-shrink-0 animate-fade-in">
+          <a href="index.html" class="block">
+            <img src="asset/tdv-logo.png" alt="The Design Village"
+              class="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain">
+          </a>
+        </div>
+
+        <!-- O.P. Jindal Global University Logo - Right -->
+        <div class="flex-shrink-0 animate-fade-in delay-200">
+          <a href="index.html" class="block">
+            <img src="asset/JGU-logo-black.png" alt="O.P. Jindal Global University"
+              class="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain">
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Thank You Section -->
+  <section class="min-h-screen flex items-center justify-center px-4 py-16 bg-gradient-to-b from-white to-[#F1EFED]">
+    <div class="max-w-4xl mx-auto text-center">
+      <!-- Success Icon -->
+      <div class="mb-8 animate-scale-in">
+        <div class="inline-flex items-center justify-center w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-[#CF7E34] animate-pulse-slow">
+          <svg class="w-12 h-12 sm:w-16 sm:h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Thank You Heading -->
+      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-6 animate-fade-in-up delay-400">
+        THANK YOU!
+      </h1>
+
+      <!-- Subheading -->
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#CF7E34] mb-6 animate-fade-in-up delay-600">
+        Your Registration is Complete
+      </h2>
+
+      <!-- Message -->
+      <div class="max-w-2xl mx-auto mb-12 animate-fade-in-up delay-800">
+        <p class="text-lg sm:text-xl text-gray-700 leading-relaxed mb-4">
+          We've received your application for The Design Village's Master of Design programme.
+        </p>
+        <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
+          Our admissions team will review your application and get back to you shortly. 
+          You will receive a confirmation email with further details.
+        </p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up delay-800">
+        <a href="index.html"
+          class="inline-flex items-center gap-2 px-8 py-3 bg-[#CF7E34] text-white rounded-lg text-sm font-bold hover:bg-[#b86d2a] transition-colors shadow-lg">
+          <span>Back to Home</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+        </a>
+        <a href="index.html#registrationForm"
+          class="inline-flex items-center gap-2 px-8 py-3 border-2 border-black text-black rounded-lg text-sm font-bold hover:bg-black hover:text-white transition-colors">
+          <span>Register Another</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Additional Info -->
+      <div class="mt-16 pt-8 border-t border-gray-300 animate-fade-in delay-800">
+        <p class="text-sm text-gray-600 mb-4">
+          Need assistance? Contact our admissions team
+        </p>
+        <a href="mailto:admissions@thedesignvillage.org" class="text-[#CF7E34] hover:text-[#b86d2a] font-semibold text-sm">
+          admissions@thedesignvillage.org
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t bg-[#000] border-white py-6 px-8">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-xs text-white">© 2026 THE DESIGN VILLAGE FOUNDATION</p>
+      <a href="index.html" class="flex items-center gap-2 text-xs text-white hover:text-white transition-colors">
+        <span>(BACK TO HOME)</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+      </a>
+    </div>
+  </footer>
+</body>
+</html>
